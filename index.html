@@ -107,8 +107,7 @@
         <section class="contact">
             <h2><span>Contact Me</span></h2>
 
-            <!-- <form action="https://formcarry.com/s/WLkWE7rrM3l" method="POST"> -->
-            <form method="POST">
+            <form action="https://formcarry.com/s/WLkWE7rrM3l" method="POST">
                 <div class="row">
                     <label for="yourName">Your name</label>
                     <input type="text" name="yourName" placeholder="Your name">
@@ -178,7 +177,7 @@
                     <p>{{ description }}</p>
                     <div class="links">
                         <a class="site-link" :href="link" target="_blank">{{ link_text }}</a>
-                        <a v-if="repo" class="site-link" :href="link" target="_blank">View repo</a>
+                        <a v-if="repo" class="site-link" :href="repo" target="_blank">View repo</a>
                     </div>
                 </div>`
         };

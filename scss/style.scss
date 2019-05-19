@@ -399,6 +399,10 @@ footer {
     background-color: #f0f0f0;
     width: 95%;
 
+    @include mq($from: desktop) {
+        width: 60%;
+    }
+
     header {
         .title, h3 {
             font-weight: normal;
