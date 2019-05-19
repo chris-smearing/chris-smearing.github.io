@@ -1,0 +1,55 @@
+@import 'mixins';
+@import 'mq';
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+h1, h2 {
+    text-transform: uppercase;
+    text-align: center;
+    color: #444;
+}
+
+h2 {
+    margin: 0;
+    @include bg-strike(#d8d0d0);
+    font-weight: normal;
+    letter-spacing: 0.1em;
+}
+h3 {
+    color: #333;
+    font-weight: normal;
+}
+body {
+    width: 100%;
+    max-width: 72rem;
+    overflow-x: hidden;
+    background-color: #f4f4f4;
+}
+
+section h2 {
+    padding: 3rem 0;
+}

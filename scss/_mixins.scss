@@ -1,0 +1,49 @@
+@mixin fullBleed {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+@mixin sectionShadow {
+    box-shadow: 0 5px 5px rgba(0,0,0,0.4);
+}
+
+//************************************************************************//
+// Text over an hr such as: --------- Free Shipping ---------- 
+//************************************************************************//
+@mixin bg-strike($color) {
+    @include mq($from: tablet) {
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap; 
+
+        > span {
+
+            position: relative;
+            display: inline-block;
+
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                width: 150%;
+                height: 1px;
+                background: $color;
+            }
+
+            &:before {
+                right: 100%;
+                margin-right: 15px;
+            }
+
+            &:after {
+                left: 100%;
+                margin-left: 15px;
+            }
+        }
+    }
+}
+

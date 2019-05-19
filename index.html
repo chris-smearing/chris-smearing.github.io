@@ -1,21 +1,319 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Chris Smearing's Portfolio</title>
-  <script src="https://unpkg.com/vue"></script>
-</head>
-<body>
-  <div id="app">
-    {{ message }}
-  </div>
 
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      }
-    })
-  </script>
+<head>
+    <title>Chris Smearing's Resume &amp; Portfolio</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Chris Smearing is a front-end web developer with experience in WordPress, Shopify, and Perl. Past experience includes programming embedded systems in DLP® projectors for Texas Instruments.">
+
+    <script src="js/vue.min.js"></script>
+    <script src="js/vuedals.min.js"></script>
+    
+    <link rel='stylesheet' id='style-css' href='style.min.css' type='text/css' media='all' />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+    <!-- Credits: ------------------------ >
+        - Font Awesome icons
+        - Vue.js
+        - Mozilla MDN web docs
+        - My past, present, and future clients
+        - https://unsplash.com/photos/95YRwf6CNw8
+            Photo by Clément H (https://unsplash.com/@clemhlrdt) on Unsplash
+        - Sass media query mixin - https://github.com/sass-mq/sass-mq
+        - Hover library - https://github.com/IanLunn/Hover
+        - Normalize - https://github.com/necolas/normalize.css
+    ------------------------------------ -->
+</head>
+
+<body>
+    <header class="about-me">
+        <h1 class="full-name">Chris Smearing</h1>
+        <h2>Resume and Portfolio</h2>
+        <img class="gravatar" src="img/gravatar.jpg"
+            alt="photo of me in the wild" width=800>
+    </header>
+
+    <main id="app">
+
+        <section class="services">
+            <h2><span>What I Do</span></h2>
+
+            <div class="service">
+                <article v-for="service in services" class="service-card">
+                    <header class="service-header" v-html="service.icon">
+                    </header>
+                    <div class="headline">
+                        <h3>{{service.name}}</h3>
+                    </div>
+                    <div class="service-description" v-html="service.description">
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="work">
+            <h2><span>Portfolio</span></h2>
+
+            <section class="grid">
+                <article v-for="site in sites" class="grid-item" @click="showDetails(site)">
+                    <figure>
+                        <img :src="site.screenshot" :alt="site.title">
+                    </figure>
+                </article>
+            </section>
+        </section>
+
+        <vuedals></vuedals>
+
+        <section class="experience">
+            <h2><span>Experience</span></h2>
+
+            <div class="service">
+                <article v-for="job in experience" class="service-card">
+                    <header class="service-header">
+                        <img class="logo" :src="job.logo" :alt="job.name">
+                    </header>
+                    <div class="headline">
+                        <h3>{{job.name}}</h3>
+                    </div>
+                    <div class="service-description" v-html="job.description">
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="download">
+            <a type="submit" href="chris_smearing_resume.pdf">Download My Full Resume</a>
+        </section>
+        
+        <section class="education">
+            <h2><span>Education</span></h2>
+            <a href="https://utk.edu" target="_blank" class="ut-logo">The University of Tennessee, Knoxville</a>
+            <h3>B.S. Electrical Engineering, 1997</h3>
+        </section>
+    </main>
+
+    <footer>
+        <section class="hire-me">
+            <a href="https://www.upwork.com/o/profiles/users/_~01c5c99f7913666e34/" target="_blank">Hire me on Upwork</a>
+        </section>
+
+        <section class="contact">
+            <h2><span>Contact Me</span></h2>
+
+            <!-- <form action="https://formcarry.com/s/WLkWE7rrM3l" method="POST"> -->
+            <form method="POST">
+                <div class="row">
+                    <label for="yourName">Your name</label>
+                    <input type="text" name="yourName" placeholder="Your name">
+
+                    <label for="yourEmail">Your email</label>
+                    <input type="email" name="yourEmail" placeholder="Your email" />
+                </div>
+
+                <label for="yourMessage">Your email</label>
+                <textarea rows=3 wrap=soft name="yourMessage" placeholder="Your message"></textarea>
+
+                <input type="hidden" name="_gotcha" />
+                <input type="hidden" name="subject" value="New submission!" />
+                <input type="submit" value="Send">
+            </form>
+        </section>
+
+        <div class="imprint">
+            <p>Copyright &copy; 2019 Chris Smearing</p>
+            <div class="social">
+                <a href="https://github.com/chris-smearing" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                <a href="https://www.linkedin.com/in/csmearing/" target="_blank"><i class="fab fa-linkedin-in fa-2x"></i></a>
+            </div>
+            <p>Built with <a href="https://vuejs.org" target="_blank"><i class="fab fa-vuejs"></i></a></p>
+
+            <p class="hidden"><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@clemhlrdt?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Clément H"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Clément H</span></a></p>
+
+        </div>
+    </footer>
+
+    <script>
+        const Bus = Vuedals.Bus;
+        const Component = Vuedals.Component;
+        const Plugin = Vuedals.default;
+        Vue.use(Plugin);
+        
+        const PortfolioModal = {
+
+            name: 'portfolio-modal',
+            props: {
+                headline: {
+                    type: String,
+                }, 
+                screenshot: {
+                    type: String,
+                }, 
+                description: {
+                    type: String,
+                }, 
+                link: {
+                    type: String,
+                }, 
+                link_text: {
+                    type: String,
+                    default: 'Go to site',
+                },
+                repo: {
+                    type: String,
+                    default: '',
+                },
+            },
+
+            template: `
+                <div class="modal-bg">
+                    <img :src="screenshot" :alt="headline">
+                    <h3>What I did:</h3>
+                    <p>{{ description }}</p>
+                    <div class="links">
+                        <a class="site-link" :href="link" target="_blank">{{ link_text }}</a>
+                        <a v-if="repo" class="site-link" :href="link" target="_blank">View repo</a>
+                    </div>
+                </div>`
+        };
+
+        var app = new Vue({
+            components: {
+                vuedals: Component,
+            },
+            el: '#app',
+            data: {
+                services: [
+                    {
+                        name: 'WordPress',
+                        icon: '<i class="fab fa-wordpress fa-3x"></i>',
+                        description: '<p>Theme configuration, responsive template development with HTML5 and CSS3</p>',
+                    },
+                    {
+                        name: 'Shopify',
+                        icon: '<img src="img/shopify-logo.svg">',
+                        description: '<p>Theme configuration, responsive template development with HTML5, CSS3, and Liquid templating</p>',
+                    },
+                    {
+                        name: 'Mailchimp',
+                        icon: '<i class="fab fa-mailchimp fa-3x"></i>',
+                        description: '<p>One-time and automated campaign setup; Creation of email compatible with majority of email clients</p>',
+                    },
+                    {
+                        name: 'HTML5 + CSS3',
+                        icon: '<i class="fas fa-code fa-3x"></i>',
+                        description: '<p>Semantic markup with responsive styling</p>',
+                    },
+                    {
+                        name: 'Hosting Setup',
+                        icon: '<i class="fas fa-desktop fa-3x"></i>',
+                        description: '<p>Complete site setup and configuration</p>',
+                    },
+                    {
+                        name: 'Maintenance and Updates',
+                        icon: '<i class="fas fa-shield-alt fa-3x"></i>',
+                        description: '<p>Test latest releases, ensuring site security and stability</p>',
+                    },
+                ],
+                sites: [
+                    {
+                        address: '//chris-smearing.github.io/landing--tyra',
+                        title: 'Tyra Beauty',
+                        screenshot: 'img/tyra_screenshot.jpg',
+                        description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation',
+                        link_text: 'See demo',
+                        repo: 'https://github.com/chris-smearing/landing--tyra',
+                    },
+                    {
+                        address: '//chris-smearing.github.io/landing--westmore',
+                        title: 'Westmore Beauty',
+                        screenshot: 'img/westmore_screenshot.jpg',
+                        description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation',
+                        link_text: 'See demo',
+                        repo: 'https://github.com/chris-smearing/landing--westmore',
+                    },
+                    {
+                        address: 'http://cidregistry.com',
+                        title: 'CID Registry',
+                        screenshot: 'img/cidregistry_screenshot.jpg',
+                        description: 'Hosting configuration, WordPress full site build and deployment, responsive template development, custom form development',
+                    },
+                    {
+                        address: 'https://bravewomentravel.com',
+                        title: 'Brave Women Travel',
+                        screenshot: 'img/brave_women_travel_screenshot.jpg',
+                        description: 'WordPress site development, responsive template development, ACF integration',
+                    },
+                    {
+                        address: 'http://servicecityenergy.com',
+                        title: 'Service City Energy',
+                        screenshot: 'img/service_city_screenshot.jpg',
+                        description: 'Hosting setup, Landing page development with Pro theme, Slider Revolution customization',
+                    },
+                    {
+                        address: 'https://drvims.com',
+                        title: "Dr. Vim's",
+                        screenshot: 'img/drvims_screenshot.jpg',
+                        description: 'Shopify theme development, plugin configuration',
+                    },
+                ],
+                experience: [
+                    {
+                        name: 'Freelance on Upwork',
+                        date: '2017-present',
+                        logo: 'img/upwork-logo.svg',
+                        description: '<ul><li>Mobile-first responsive template development in WordPress and Shopify</li>\
+                        <li>Create custom templates, landing pages, and contact forms; able to create templates by hand or with page builders, such as Elementor or Pro theme</li>\
+                        <li>Conversion of graphic designs to page layouts for desktop and mobile</li>\
+                        <li>Cross-platform and device testing in BrowserStack to debug</li>\
+                        <li>Essential skills: HTML5, CSS3, PHP, JavaScript, jQuery, Shopify Liquid, git</li></ul>',
+                    },
+                    {
+                        name: 'Texas Instruments - Consultant',
+                        date: '2017,2019',
+                        logo: 'img/ti-logo.svg',
+                        description: '<p>Created an application in Perl to analyze semiconductor test tool log files and aggregate the information into an Oracle database. The resulting data is then presented to the user via a web app built with mod-perl and Bootstrap 3. Template Toolkit was used for page templates that gave me a foundation in template processing systems.</p>',
+                    },
+                    {
+
+                        name: 'Texas Instruments',
+                        date: '1998-2015',
+                        logo: 'img/ti-logo.svg',
+                        description: '<p><strong>Embedded Software Design:</strong> Created software for 2 generations of DLP® platforms, eventually leading to sales of over 7 million units. Worked with ASIC and board designers to guarantee proper operation and fulfill the end-product requirements. </p>\
+                        <ul><li>Assisted in the development of first generation products, which spawned the code base for all future platforms. Developed Windows software to assist with device testing and verification.</li> \
+                        <li>Architected and implemented the reference design application for second generation products that demonstrated projector system control operation. </li>\
+                        <li>Wrote extensive documentation for the reference application and the underlying ASIC.</li></ul> \
+                        <p><strong>FPGA and ASIC Design:</strong> Utilized the latest generation of design and verification tools to implement various video and image processing algorithms for use in DLP® prototypes and ASICs.</p> \
+                        <p><strong>Skills</strong> \
+                        <ul><li>Programming languages: Assembly, C, C++, Perl, Tcl, Specman E, VHDL </li> \
+                        <li>Software: ARM RealView, Visual Studio, Eclipse, ModelSim, Cadence simulation and verification, ClearCase, RCS, Altera Quartus, Xilinx ISE, Synplify, µC/OS II, ThreadX RTOS </li></ul>',
+                    },
+                ],
+            },
+            methods: {
+                showDetails: function (site) {
+                    this.$vuedals.open({
+                        title: site.title,
+                        component: PortfolioModal,
+                        props: {
+                            headline: site.title,
+                            screenshot: site.screenshot,
+                            link: site.address,
+                            description: site.description,
+                            link_text: site.link_text,
+                            repo: site.repo,
+                        }
+                    });
+                }
+            }
+        })
+    </script>
 </body>
+
 </html>

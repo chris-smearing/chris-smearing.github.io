@@ -1,0 +1,436 @@
+// To enable support for browsers that do not support @media queries,
+// (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
+// Create a separate stylesheet served exclusively to these browsers,
+// meaning @media queries will be rasterized, relying on the cascade itself
+$mq-responsive: true;
+
+// Name your breakpoints in a way that creates a ubiquitous language
+// across team members. It will improve communication between
+// stakeholders, designers, developers, and testers.
+$mq-breakpoints: (
+    mobile:  320px,
+    tablet:  740px,
+    desktop: 980px,
+    wide:    1300px,
+
+    // Tweakpoints
+    desktopAd: 810px,
+    mobileLandscape: 480px
+);
+
+@import 'normalize';
+@import 'defaults';
+@import 'mq';
+@import 'modal';
+@import 'ut-logo';
+@import 'mixins';
+
+@import "vendor/hover/options";
+@import "vendor/hover/mixins";
+@import "vendor/hover/hacks";
+@import "vendor/hover/effects/shadow-and-glow-transitions/grow-shadow";
+@import "vendor/hover/effects/shadow-and-glow-transitions/shadow";
+
+
+.hidden {
+    display: none;
+}
+.about-me {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("img/laptop-javascript.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include fullBleed();
+    @include sectionShadow();
+
+    height: 20vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include mq($from: tablet) {
+        height: 40vh;
+    }
+
+    .full-name, h2 {
+        color: #f0f0f0;
+    }
+
+    h2 {
+        font-weight: normal;
+        font-size: 1.25rem;
+    }
+
+    .gravatar {
+        position: absolute;
+        top: 0.75rem;
+        right: 1.5rem;
+        width: 12%;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        height: auto;
+        border-radius: 50%;
+        
+        @include mq($from: tablet) {
+            top: 2rem;
+            right: 2.75rem;
+        }
+
+        @include mq($from: desktop) {
+            width: 15%;
+        }
+        @include mq($from: wide) {
+            width: 10%;
+        }
+    }
+}
+
+.services, .experience {
+    margin-top: 1rem;
+    .service {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        &-card {
+            background-color: white;
+            flex: 0 1 100%;
+            margin: 1rem;
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            
+            @include shadow();
+
+            .service-header {
+                width: 90%;
+                margin: 1rem auto 0;
+                text-align: center;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img, i {
+                    max-height: 48px;
+                    margin: 1rem;
+                }
+                i {
+                    color: #555555;
+                    transition: color 0.175s ease-in;
+                }
+            }
+
+            .service-description {
+                padding: 1rem 2rem;
+                margin: 1rem auto;
+            }
+
+            &:hover {
+                i {
+                    color: darken(#555555, 20%);
+                    transition: color 0.175s ease-in;
+                }
+            }
+
+            @include mq($from: tablet) {
+                flex: 1 1 45%;
+            }
+            @include mq($from: desktop) {
+                flex: 1 1 25%;
+            }
+        }
+        .headline {
+            position: relative;
+            margin: 1rem auto;
+
+            &:after {
+                content: '';
+                background-color: #d8d0d0;
+                height: 3px;
+                width: 70px;
+                position: absolute;
+                bottom: -1rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    @include mq($from: desktop) {
+        max-width: 54rem;
+        margin: 0 auto;
+    }
+}
+
+.experience {
+    .service-description {
+        text-align: left;
+        line-height: 1.7;
+    }
+    @include mq($from: desktop) {
+        max-width: 72rem;
+    }
+}
+
+.work {
+    display: block;
+    
+    h2 {
+        @include bg-strike(#e4e4e4);
+    }
+    .grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    
+        &-item {
+            width: 100%;
+            cursor: pointer;
+            margin: 1rem;
+            background-color: white;
+            flex: 1 1 100%;
+            
+            @include shadow();
+
+            figure {
+                position: relative;
+
+                &:after {
+                    display: none;
+                    content: '\f31e';
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    font-size: 3rem;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    height: auto;
+                    color: black;
+                    z-index: 999;
+                    transform: translate(-50%, -50%);
+                }
+                &:hover {
+                    background: white;
+                    opacity: 0.7;
+                    &:after {
+                        display: block;
+                    }
+                }
+            }
+            @include mq($from: tablet) {
+                flex: 1 1 45%;
+            }
+            @include mq($from: desktop) {
+                flex: 0 1 30%;
+            }
+        }
+    }
+}
+
+.education {
+    text-align: center;
+
+    .ut-logo {
+        width: 190px;
+        height: 127px;
+        padding: 2rem 0;
+        color: transparent;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+.download {
+    padding: 2rem 0 0;
+    margin: 0 auto;
+    text-align: center;
+
+    a {
+        color: #444;
+        padding: 0.5rem 1rem;
+        border: 2px solid lightgray;
+        transition: all 0.1s ease-in;
+
+        &:active, &:focus, &:hover {
+            background-color: lightgray;
+            transition: all 0.3s ease-in;
+        }
+    }
+}
+footer {
+    .hire-me {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 0;
+        @include fullBleed();
+
+        a {
+            background-color: #6FDA44;
+            color: white;
+            padding: 1rem 2rem;
+            display: block;
+            text-decoration: none;
+
+            $activeColor: white !global;
+            @include grow-shadow();
+        }
+        @include mq($from: tablet) {
+            background-color: lightgrey;
+            padding-bottom: 4rem;
+            padding-top: 4rem;
+
+            a {
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
+        @include mq($from: desktop) {
+            a {
+                width: 30%;
+            }
+        }
+    }
+    .contact {
+        width: 90%;
+        margin: 0 auto;
+        label {
+            display: none;
+        }
+        input:not([type=submit]), textarea {
+            margin: 1rem 0;
+            line-height: 1.9;
+            padding: 0 1rem;
+            border: none;
+            background-color: #f4f4f4;
+            border-bottom: 2px solid lightgray;
+            transition: all 0.1s ease-in;
+
+            &:active, &:focus {
+                border: 2px solid lightgray;
+                background-color: lightgray;
+                transition: all 0.1s ease-in;
+            }
+        }
+        input[type=submit] {
+            padding: 0.5rem 1rem;
+            border: 2px solid lightgray;
+            transition: all 0.1s ease-in;
+
+            &:active, &:focus, &:hover {
+                background-color: lightgray;
+                transition: all 0.3s ease-in;
+            }
+        }
+        .row {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            input:first-of-type {
+                margin-top: 0;
+            }
+            
+            @include mq($from: tablet) {
+                flex-direction: row;
+                justify-content: space-between;
+                input {
+                    width: 48%;
+                }
+                input:first-of-type {
+                    margin-top: 1rem;
+                }
+            }
+        }
+        textarea {
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0;
+            width: 100%;
+
+            @include mq($from: tablet) {
+                width: 50%;
+            }
+            @include mq($from: desktop) {
+                width: 30%;
+            }
+
+        }
+    }
+
+    .imprint {
+        margin: 3rem 0;
+        font-size: 0.75rem;
+        text-align: center;
+
+        .social {
+            width: 20%;
+            margin: 1.5rem auto;
+            display: flex;
+            justify-content: space-between;
+            a {
+                color: #555555;
+            }
+            @include mq($from: tablet) {
+                width: 10%;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+.vuedal {
+    background-color: #f0f0f0;
+    width: 95%;
+
+    header {
+        .title, h3 {
+            font-weight: normal;
+        }
+        .close {
+            font-weight: 900;
+            font-size: 38px;
+        }
+    }
+
+    .modal-bg {
+        margin: 0 auto 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .links {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            padding-top: 1rem;
+
+            .site-link {
+                background-color: grey;
+                color: white;
+                padding: 0.5rem 2rem;
+
+                &:nth-child(2) {
+                    margin-left: 1rem;
+                }
+            }
+        }
+    }
+}
