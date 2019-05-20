@@ -44,7 +44,7 @@ $mq-breakpoints: (
     @include fullBleed();
     @include sectionShadow();
 
-    height: 20vh;
+    height: 35vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -134,6 +134,13 @@ $mq-breakpoints: (
             .service-description {
                 padding: 1rem 2rem;
                 margin: 1rem auto;
+
+                ul {
+                    padding-left: 1rem;
+                    li {
+                        list-style-position: outside;
+                    }
+                }
             }
 
             &:hover {
