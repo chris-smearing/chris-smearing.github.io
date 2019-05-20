@@ -134,7 +134,7 @@ $mq-breakpoints: (
             .service-description {
                 padding: 1rem 2rem;
                 margin: 1rem auto;
-
+                
                 ul {
                     padding-left: 1rem;
                     li {
@@ -160,6 +160,7 @@ $mq-breakpoints: (
         .headline {
             position: relative;
             margin: 1rem auto;
+            padding: 0 0.5rem;
 
             &:after {
                 content: '';

@@ -26,6 +26,10 @@ img {
 a {
     text-decoration: none;
     text-transform: uppercase;
+
+    &:visited {
+        color: #444;
+    }
 }
 h1, h2 {
     text-transform: uppercase;
@@ -52,4 +56,8 @@ body {
 
 section h2 {
     padding: 3rem 0;
+}
+
+p, li {
+    line-height: 1.6rem;
 }
