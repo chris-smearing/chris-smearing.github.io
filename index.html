@@ -10,7 +10,8 @@
     <meta name="description" content="Chris Smearing is a front-end web developer with experience in WordPress, Shopify, and Perl. Past experience includes programming embedded systems in DLP® projectors for Texas Instruments.">
     <meta name="google-site-verification" content="_mLVXcJG-EjfgD9g3vRFgQ7HqHk9pE1wz-KzXoIzzmw" />
     <meta name="msvalidate.01" content="0F95A6D4B6FBCD7F887B45007C798789" />
-    
+    <link rel="canonical" href="https://chris-smearing.github.io" />
+
     <script src="js/vue.min.js"></script>
     <script src="js/vuedals.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?render=6LcFX6QUAAAAAIFRJOP8QH6nqdirIsbjd7jMbTjm"></script>
@@ -30,8 +31,55 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-
         gtag('config', 'UA-141872549-1');
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org/",
+            "@type": "Person",
+            "jobTitle": "Web Developer",
+            "description": "Chris Smearing is a front-end web developer with experience in WordPress, Shopify, and Perl. Past experience includes programming embedded systems in DLP® projectors for Texas Instruments.",
+            "name": "Chris Smearing",
+            "worksFor": {
+                "@type": "Person",
+                "name": "Chris Smearing",
+                "url": "https://chris-smearing.github.io/",
+            },            
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "University of Tennessee, Knoxville",
+                "url": "https://utk.edu/",
+                "sameAs": "https://www.utk.edu/"
+              },            
+              "alumniOf": {
+                "@type": "Organization",
+                "name": "Texas Instruments, Inc",
+                "url": "https://ti.com/",
+                "sameAs": "https://www.ti.com/",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Plano", 
+                    "addressRegion": "TX",
+                    "postalCode": "75023",
+                    "streetAddress": "6550 Chase Oaks Blvd"
+                },
+              },            
+        }    
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "WebSite",
+            "name": "Resume and Portfolio of Chris Smearing",
+            "url": "https://chris-smearing.github.io",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "{search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
     </script>
 
     <!-- Credits: ------------------------ >
@@ -44,6 +92,8 @@
         - Sass media query mixin - https://github.com/sass-mq/sass-mq
         - Hover library - https://github.com/IanLunn/Hover
         - Normalize - https://github.com/necolas/normalize.css
+        - https://technicalseo.com/tools/schema-markup-generator/
+        - design inspiration from https://dribbble.com
     ------------------------------------ -->
 </head>
 
