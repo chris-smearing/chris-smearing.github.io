@@ -15,6 +15,7 @@
     <script src="js/vue.min.js"></script>
     <script src="js/vuedals.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?render=6LcFX6QUAAAAAIFRJOP8QH6nqdirIsbjd7jMbTjm"></script>
+    <script src="js/particles.js/particles.min.js"></script>
 
     <link rel='stylesheet' id='style-css' href='style.min.css' type='text/css' media='all' />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
@@ -98,11 +99,14 @@
 </head>
 
 <body>
+    <div id="particles-js"></div>
+
     <header class="about-me">
         <h1 class="full-name">Chris Smearing</h1>
         <h2>Resume and Portfolio</h2>
         <img class="gravatar" src="img/gravatar.jpg"
             alt="photo of me in the wild" width=800>
+
     </header>
 
     <main id="app">
@@ -149,6 +153,15 @@
                         <h3>{{job.name}}</h3>
                     </div>
                     <div class="service-description" v-html="job.description">
+                    </div>
+
+                    <div class="service-description" v-if="job.skills">
+                        <p><strong>Skills</strong></p>
+                        <ul>
+                            <li v-for="skill in job.skills">
+                                {{ skill }}
+                            </li>
+                        </ul>            
                     </div>
                 </article>
             </div>
@@ -348,28 +361,41 @@
                         description: '<ul><li>Mobile-first responsive template development in WordPress and Shopify</li>\
                         <li>Create custom templates, landing pages, and contact forms; able to create templates by hand or with page builders, such as Elementor or Pro theme</li>\
                         <li>Conversion of graphic designs to page layouts for desktop and mobile</li>\
-                        <li>Cross-platform and device testing in BrowserStack to debug</li>\
-                        <li>Essential skills: HTML5, CSS3, PHP, JavaScript, jQuery, Shopify Liquid, git</li></ul>',
+                        <li>Cross-platform and device testing in BrowserStack to debug</li></ul>',
+                        skills: [
+                            'HTML5',
+                            'CSS3, SCSS',
+                            'PHP',
+                            'WordPress',
+                            'JavaScript',
+                            'jQuery',
+                            'Shopify Liquid',
+                            'git',
+                        ],
                     },
                     {
                         name: 'Texas Instruments - Consultant',
                         date: '2017,2019',
                         logo: 'img/ti-logo.svg',
                         description: '<p>Created an application in Perl to analyze semiconductor test tool log files and aggregate the information into an Oracle database. The resulting data is then presented to the user via a web app built with mod-perl and Bootstrap 3. Template Toolkit was used for page templates that gave me a foundation in template processing systems.</p>',
+                        skills: [
+                            'Programming languages: Perl, HTML, CSS',
+                            'Software: Apache, Template Toolkit, Bootstrap 3',
+                        ],
                     },
                     {
-
                         name: 'Texas Instruments',
                         date: '1998-2015',
                         logo: 'img/ti-logo.svg',
                         description: '<p><strong>Embedded Software Design:</strong> Created software for 2 generations of DLP® platforms, eventually leading to sales of over 7 million units. Worked with ASIC and board designers to guarantee proper operation and fulfill the end-product requirements. </p>\
-                        <ul><li>Assisted in the development of first generation products, which spawned the code base for all future platforms. Developed Windows software to assist with device testing and verification.</li> \
-                        <li>Architected and implemented the reference design application for second generation products that demonstrated projector system control operation. </li>\
+                        <ul><li>Assisted in the development of first generation products, which spawned the code base for all future platforms. Developed Windows software for device testing and verification.</li> \
+                        <li>Architected and implemented the reference application for second generation products that demonstrated projector system control operation. </li>\
                         <li>Wrote extensive documentation for the reference application and the underlying ASIC.</li></ul> \
-                        <p><strong>FPGA and ASIC Design:</strong> Utilized the latest generation of design and verification tools to implement various video and image processing algorithms for use in DLP® prototypes and ASICs.</p> \
-                        <p><strong>Skills</strong> \
-                        <ul><li>Programming languages: Assembly, C, C++, Perl, Tcl, Specman E, VHDL </li> \
-                        <li>Software: ARM RealView, Visual Studio, Eclipse, ModelSim, Cadence simulation and verification, ClearCase, RCS, Altera Quartus, Xilinx ISE, Synplify, µC/OS II, ThreadX RTOS </li></ul>',
+                        <p><strong>FPGA and ASIC Design:</strong> Utilized the latest generation of design and verification tools to implement various video and image processing algorithms for use in DLP® prototypes and ASICs.</p>',
+                        skills: [
+                            'Programming languages: Assembly, C, C++, Perl, Tcl, Specman E, VHDL',
+                            'Software: ARM RealView, Visual Studio, Eclipse, ModelSim, Cadence simulation and verification, ClearCase, RCS, Altera Quartus, Xilinx ISE, Synplify, µC/OS II, ThreadX RTOS',
+                        ],
                     },
                 ],
             },
@@ -389,7 +415,9 @@
                     });
                 }
             }
-        })
+        });
+
+        particlesJS.load('particles-js', 'particles.json');
     </script>
 </body>
 
