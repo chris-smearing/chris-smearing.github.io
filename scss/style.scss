@@ -146,7 +146,7 @@ $mq-breakpoints: (
                 padding: 1rem 2rem 0;
                 
                 ul {
-                    padding-left: 1rem;
+                    padding-left: 2rem;
                     li {
                         list-style-position: outside;
                     }
@@ -197,6 +197,14 @@ $mq-breakpoints: (
 }
 
 .experience {
+    .service-card {
+        @include mq($from: tablet) {
+            flex: 1 1 100%;
+        }
+        @include mq($from: desktop) {
+            flex: 1 1 45%;
+        }
+    }
     .service-description {
         text-align: left;
         line-height: 1.7;
@@ -253,7 +261,7 @@ $mq-breakpoints: (
                 }
             }
             @include mq($from: tablet) {
-                flex: 1 1 45%;
+                flex: 0 1 45%;
             }
             @include mq($from: desktop) {
                 flex: 0 1 30%;
@@ -284,11 +292,10 @@ $mq-breakpoints: (
         color: #444;
         padding: 0.5rem 1rem;
         border: 2px solid lightgray;
-        transition: all 0.1s ease-in;
+        @include grow-shadow();
 
         &:active, &:focus, &:hover {
             background-color: lightgray;
-            transition: all 0.3s ease-in;
         }
     }
 }
@@ -349,11 +356,10 @@ footer {
         input[type=submit] {
             padding: 0.5rem 1rem;
             border: 2px solid lightgray;
-            transition: all 0.1s ease-in;
+            @include grow-shadow();
 
             &:active, &:focus, &:hover {
                 background-color: lightgray;
-                transition: all 0.3s ease-in;
             }
         }
         .row {
@@ -385,11 +391,8 @@ footer {
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 0;
-            width: 100%;
+            width: 50%;
 
-            @include mq($from: tablet) {
-                width: 50%;
-            }
             @include mq($from: desktop) {
                 width: 30%;
             }
