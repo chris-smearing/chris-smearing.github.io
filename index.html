@@ -104,8 +104,7 @@
     <header class="about-me">
         <h1 class="full-name">Chris Smearing</h1>
         <h2>Resume and Portfolio</h2>
-        <img class="gravatar" src="img/gravatar.jpg"
-            alt="photo of me in the wild" width=800>
+        <img class="gravatar lazy" data-src="img/gravatar.jpg" data-srcset="img/gravatar.jpg" alt="photo of me in the wild" width=800 loading="lazy">
 
     </header>
 
@@ -133,7 +132,7 @@
             <section class="grid">
                 <article v-for="site in sites" class="grid-item" @click="showDetails(site)">
                     <figure>
-                        <img :src="site.screenshot" :alt="site.title">
+                        <img class="lazy" :data-src="site.screenshot" :data-srcset="site.screenshot" :alt="site.title" loading="lazy">
                     </figure>
                 </article>
             </section>
@@ -147,7 +146,7 @@
             <div class="service">
                 <article v-for="job in experience" class="service-card">
                     <header class="service-header">
-                        <img class="logo" :src="job.logo" :alt="job.name">
+                        <img class="logo lazy" :data-src="job.logo" :data-srcset="job.logo" :alt="job.name" loading="lazy">
                     </header>
                     <div class="headline">
                         <h3>{{job.name}}</h3>
@@ -222,7 +221,7 @@
                 <a href="https://github.com/chris-smearing" target="_blank"><i class="fab fa-github fa-2x"></i></a>
                 <a href="https://www.linkedin.com/in/csmearing/" target="_blank"><i class="fab fa-linkedin-in fa-2x"></i></a>
             </div>
-            <p>Built with <a href="https://vuejs.org" target="_blank"><i class="fab fa-vuejs"></i></a></p>
+            <p>Built with <a href="https://vuejs.org" target="_blank"><i class="fab fa-vuejs fa-2x"></i></a></p>
 
             <p class="hidden"><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@clemhlrdt?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Clément H"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Clément H</span></a></p>
 
@@ -356,7 +355,7 @@
                         address: 'https://pzre.com',
                         title: "Penzance",
                         screenshot: 'img/penzance_map.jpg',
-                        description: 'WordPress with Avada theme, custom Google map with filterable markers, Custom post types for team members and project locations',
+                        description: 'Complete site development in WordPress with Avada theme, custom Google map with filterable markers, Custom post types for team members and project locations',
                     },
                     {
                         address: 'https://hungryhuy.com',
@@ -436,6 +435,47 @@
         });
 
         particlesJS.load('particles-js', 'particles.json');
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.srcset = lazyImage.dataset.srcset;
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+
+            var fadeupCards = [].slice.call(document.querySelectorAll("article.service-card, article.grid-item"));
+
+            if ("IntersectionObserver" in window) {
+                let fadeUpCardObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let fadeUpCard = entry.target;
+                            fadeUpCard.classList.add("fade-up");
+                            fadeUpCardObserver.unobserve(fadeUpCard);
+                        }
+                    });
+                });
+
+                fadeupCards.forEach(function(fadeupCard) {
+                    fadeUpCardObserver.observe(fadeupCard);
+                });
+            }
+        });
+
     </script>
 </body>
 
