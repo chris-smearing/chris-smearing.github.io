@@ -475,6 +475,7 @@ footer {
         font-size: 0.75rem;
         text-align: center;
         background-color: lightgray;
+        @include fullBleed();
 
         .social {
             width: 20%;
