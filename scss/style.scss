@@ -350,24 +350,62 @@ footer {
     .contact {
         width: 90%;
         margin: 0 auto;
-        label {
-            display: none;
-        }
-        input:not([type=submit]), textarea {
-            margin: 1rem 0;
-            line-height: 1.9;
-            padding: 0 1rem;
-            border: none;
-            background-color: #f4f4f4;
-            border-bottom: 2px solid lightgray;
-            transition: all 0.1s ease-in;
 
-            &:active, &:focus {
-                border: 2px solid lightgray;
-                background-color: lightgray;
-                transition: all 0.1s ease-in;
+        .floating-label-wrap {
+            position: relative;
+            flex: 0 1 48%;
+            margin-bottom: 3rem;
+        }
+
+        .floating-label-field, .floating-label {
+            width: 100%;
+        }
+
+        .floating-label-field {
+            border-width: 0;
+            border-bottom-width: 2px;
+            z-index: 20;
+            background-color: transparent;
+
+            &:focus {
+                outline: 0;
+                box-shadow: 0;
+                border-bottom: 2px solid lightgray;
+                background-color: rgba(0,0,0, 0.05);
+            }
+
+            &::placeholder {
+                color: transparent;
+            }
+
+            &,
+            & + .floating-label {
+                position: relative;
+                line-height: 1;
+                padding: 1.5em;
+            }
+            & + .floating-label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                user-select: none;
+                z-index: 10;
+                transition: transform .25s, opacity .25s ease-in-out;
+                transform-origin: 0 0;
+                opacity: .5;
+            }
+            &:not(textarea) {
+                height: 4em;
+            }
+            &:focus,
+            &:not(:placeholder-shown) {
+                & + .floating-label {
+                    transform: translate(1%, -55%) scale(.8);
+                    opacity: .25;
+                }
             }
         }
+
         input[type=submit] {
             padding: 0.5rem 1rem;
             border: 2px solid lightgray;
@@ -390,10 +428,7 @@ footer {
                 flex-direction: row;
                 justify-content: space-between;
                 input {
-                    width: 48%;
-                }
-                input:first-of-type {
-                    margin-top: 1rem;
+                    width: 100%;
                 }
             }
         }
@@ -436,6 +471,7 @@ footer {
     }
     .fa-vuejs {
         vertical-align: bottom;
+        color: black;
     }
 }
 
