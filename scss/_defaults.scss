@@ -25,7 +25,8 @@ img {
 
 a {
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: none;
+    color: #555;
 
     &:visited {
         color: #444;
@@ -60,4 +61,11 @@ section h2 {
 
 p, li {
     line-height: 1.6rem;
+}
+
+.fab, footer svg {
+    transition: all 0.3s;
+    &:hover {
+        transform: scale(1.2);
+    }
 }

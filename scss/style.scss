@@ -121,12 +121,20 @@ $mq-breakpoints: (
             text-align: center;
             @include shadow();
             opacity: 0;
-            transform: translateY(100px);
             transition: all 0.75s;
 
+            &.center {
+                transform: translateY(100px);
+            }
+            &.left {
+                transform: translateX(-200px);
+            }
+            &.right {
+                transform: translateX(200px);
+            }
             &.fade-up {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate(0, 0);
             }
 
             .service-header {
@@ -242,12 +250,20 @@ $mq-breakpoints: (
             @include shadow();
 
             opacity: 0;
-            transform: translateY(100px);
             transition: all 0.75s;
 
+            &.center {
+                transform: translateY(100px);
+            }
+            &.left {
+                transform: translateX(-200px);
+            }
+            &.right {
+                transform: translateX(200px);
+            }
             &.fade-up {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate(0, 0);
             }
 
             figure {
@@ -349,7 +365,7 @@ footer {
     }
     .contact {
         width: 90%;
-        margin: 0 auto;
+        margin: 0 auto 3rem;
 
         .floating-label-wrap {
             position: relative;
@@ -359,6 +375,10 @@ footer {
 
         .floating-label-field, .floating-label {
             width: 100%;
+        }
+
+        .floating-label-field, textarea {
+            border-bottom-color: rgb(227,227,227);
         }
 
         .floating-label-field {
@@ -451,9 +471,10 @@ footer {
     }
 
     .imprint {
-        margin: 3rem 0;
+        padding: 3rem 0;
         font-size: 0.75rem;
         text-align: center;
+        background-color: lightgray;
 
         .social {
             width: 20%;
@@ -469,9 +490,49 @@ footer {
             }
         }
     }
+    .affiliates {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        p {
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .digital-ocean {
+            display: flex;
+            flex-direction: column;
+            svg {
+                max-width: 32px;
+            }
+        }
+        .namecheap {
+            margin-top: 1rem;
+            svg {
+                max-width: 128px;
+            }
+        }
+
+        @include mq($from: tablet) {
+            flex-direction: row;
+            align-items: center;
+
+            .digital-ocean {
+                margin-right: 0.75rem;
+            }
+            .namecheap {
+                margin-top: 0;
+                margin-left: 0.75rem;
+            }
+        }
+    }
     .fa-vuejs {
         vertical-align: bottom;
-        color: black;
+        color: #555;
+        @include mq($from: tablet) {
+            margin-top: 1rem;
+        }
     }
 }
 
