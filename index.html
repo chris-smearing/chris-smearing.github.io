@@ -102,7 +102,11 @@
     <header class="about-me">
         <h1 class="full-name">Chris Smearing</h1>
         <h2>Resume and Portfolio</h2>
-        <img class="gravatar lazy" data-src="img/gravatar.jpg" data-srcset="img/gravatar.jpg" alt="photo of me in the wild" width=800 loading="lazy">
+        <picture class="lazy">
+            <source type="image/webp" data-srcset="images/gravatar.webp">
+            <source type="image/jpeg" data-srcset="images/gravatar.jpg">
+            <img class="gravatar" data-srcset="images/gravatar.jpg" alt="photo of me in the wild" width=800 loading="lazy">
+        </picture>
 
     </header>
 
@@ -130,10 +134,10 @@
             <section class="grid">
                 <article v-for="(site, index) in sites" class="grid-item" v-bind:class="{'left':(index % 3 === 0), 'right': (index % 3 === 2), 'center': (index % 3 === 1)}" @click="showDetails(site)">
                     <figure>
-                        <picture>
-                            <source class="lazy" type="image/webp" :data-srcset="getWebp(site.screenshot)">
-                            <source class="lazy" type="image/jpeg" :data-srcset="getJpg(site.screenshot)">
-                            <img class="lazy" :data-src="getJpg(site.screenshot)" :data-srcset="getJpg(site.screenshot)" :alt="site.title" loading="lazy">
+                        <picture class="lazy">
+                            <source type="image/webp" :data-srcset="getWebp(site.screenshot)">
+                            <source type="image/jpeg" :data-srcset="getJpg(site.screenshot)">
+                            <img :data-srcset="getJpg(site.screenshot)" :alt="site.title" loading="lazy">
                         </picture>
                     </figure>
                 </article>
@@ -476,16 +480,16 @@
         particlesJS.load('particles-js', 'particles.json');
 
         document.addEventListener("DOMContentLoaded", function() {
-            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy, source.lazy"));
+            var lazyImages = [].slice.call(document.querySelectorAll(".lazy > source"));
 
             if ("IntersectionObserver" in window) {
                 let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
                     entries.forEach(function(entry) {
                         if (entry.isIntersecting) {
                             let lazyImage = entry.target;
-                            lazyImage.src = lazyImage.dataset.src;
                             lazyImage.srcset = lazyImage.dataset.srcset;
-                            lazyImage.classList.remove("lazy");
+                            lazyImage.nextElementSibling.srcset = lazyImage.dataset.srcset;
+                            lazyImage.parentElement.classList.remove("lazy");
                             lazyImageObserver.unobserve(lazyImage);
                         }
                     });
@@ -493,6 +497,11 @@
 
                 lazyImages.forEach(function(lazyImage) {
                     lazyImageObserver.observe(lazyImage);
+                });
+            } else {
+                // Not supported, load all images immediately
+                lazyImages.forEach(function(image){
+                    image.nextElementSibling.src = image.nextElementSibling.dataset.srcset;
                 });
             }
 
@@ -511,6 +520,11 @@
 
                 fadeupCards.forEach(function(fadeupCard) {
                     fadeUpCardObserver.observe(fadeupCard);
+                });
+            } else {
+                // Not supported, load all cards immediately
+                fadeupCards.forEach(function(fadeupCard){
+                    fadeUpCard.classList.add("fade-up");
                 });
             }
         });
