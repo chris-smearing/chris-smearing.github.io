@@ -130,7 +130,11 @@
             <section class="grid">
                 <article v-for="(site, index) in sites" class="grid-item" v-bind:class="{'left':(index % 3 === 0), 'right': (index % 3 === 2), 'center': (index % 3 === 1)}" @click="showDetails(site)">
                     <figure>
-                        <img class="lazy" :data-src="site.screenshot" :data-srcset="site.screenshot" :alt="site.title" loading="lazy">
+                        <picture>
+                            <source class="lazy" type="image/webp" :data-srcset="getWebp(site.screenshot)">
+                            <source class="lazy" type="image/jpeg" :data-srcset="getJpg(site.screenshot)">
+                            <img class="lazy" :data-src="getJpg(site.screenshot)" :data-srcset="getJpg(site.screenshot)" :alt="site.title" loading="lazy">
+                        </picture>
                     </figure>
                 </article>
             </section>
@@ -242,7 +246,7 @@
             </div>
 
             <p class="hidden"><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@clemhlrdt?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Clément H"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Clément H</span></a></p>
-            
+
             <p>Built with <a href="https://vuejs.org" target="_blank"><i class="fab fa-vuejs fa-2x"></i></a></p>
 
         </div>
@@ -261,7 +265,10 @@
                 headline: {
                     type: String,
                 }, 
-                screenshot: {
+                screenshotJpg: {
+                    type: String,
+                }, 
+                screenshotWebp: {
                     type: String,
                 }, 
                 description: {
@@ -282,7 +289,12 @@
 
             template: `
                 <div class="modal-bg">
-                    <img :src="screenshot" :alt="headline">
+                    <picture>
+                        <source type="image/webp" :srcset="screenshotWebp">
+                        <source type="image/jpeg" :srcset="screenshotJpg">
+                        <img :src="screenshotJpg" :srcset="screenshotJpg" :alt="headline" loading="lazy">
+                    </picture>
+                        
                     <h3>What I did:</h3>
                     <p>{{ description }}</p>
                     <div class="links">
@@ -334,7 +346,7 @@
                     {
                         address: '//chris-smearing.github.io/landing--tyra',
                         title: 'Tyra Beauty',
-                        screenshot: 'img/tyra_screenshot.jpg',
+                        screenshot: 'images/tyra_screenshot',
                         description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation',
                         link_text: 'See demo',
                         repo: 'https://github.com/chris-smearing/landing--tyra',
@@ -342,7 +354,7 @@
                     {
                         address: '//chris-smearing.github.io/landing--westmore',
                         title: 'Westmore Beauty',
-                        screenshot: 'img/westmore_screenshot.jpg',
+                        screenshot: 'images/westmore_screenshot',
                         description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation',
                         link_text: 'See demo',
                         repo: 'https://github.com/chris-smearing/landing--westmore',
@@ -350,43 +362,43 @@
                     {
                         address: 'http://cidregistry.com',
                         title: 'CID Registry',
-                        screenshot: 'img/cidregistry_screenshot.jpg',
+                        screenshot: 'images/cidregistry_screenshot',
                         description: 'Hosting configuration, WordPress full site build and deployment, responsive template development, custom form development',
                     },
                     {
                         address: 'https://bravewomentravel.com',
                         title: 'Brave Women Travel',
-                        screenshot: 'img/brave_women_travel_screenshot.jpg',
+                        screenshot: 'images/brave_women_travel_screenshot',
                         description: 'WordPress site development, responsive template development, ACF integration',
                     },
                     {
                         address: 'http://servicecityenergy.com',
                         title: 'Service City Energy',
-                        screenshot: 'img/service_city_screenshot.jpg',
+                        screenshot: 'images/service_city_screenshot',
                         description: 'Hosting setup, Landing page development with Pro theme, Slider Revolution customization',
                     },
                     {
                         address: 'https://drvims.com',
                         title: "Dr. Vim's",
-                        screenshot: 'img/drvims_screenshot.jpg',
+                        screenshot: 'images/drvims_screenshot',
                         description: 'Shopify theme development, plugin configuration',
                     },
                     {
                         address: 'https://pzre.com',
                         title: "Penzance",
-                        screenshot: 'img/penzance_map.jpg',
+                        screenshot: 'images/penzance_map',
                         description: 'Complete site development in WordPress with Avada theme, custom Google map with filterable markers, Custom post types for team members and project locations',
                     },
                     {
                         address: 'https://hungryhuy.com',
                         title: "Hungry Huy",
-                        screenshot: 'img/hungry-huy.jpg',
+                        screenshot: 'images/hungry-huy',
                         description: 'Header redevelopment, added subscribe form, Cloudflare setup, Retina images setup',
                     },
                     {
                         address: 'https://chaos.club',
                         title: "Chaos Club",
-                        screenshot: 'img/chaos-club.jpg',
+                        screenshot: 'images/chaos-club',
                         description: 'Footer redevelopment, Personalizer style updates, product categorization improvements',
                     },
                 ],
@@ -443,13 +455,20 @@
                         component: PortfolioModal,
                         props: {
                             headline: site.title,
-                            screenshot: site.screenshot,
+                            screenshotJpg: this.getJpg(site.screenshot),
+                            screenshotWebp: this.getWebp(site.screenshot),
                             link: site.address,
                             description: site.description,
                             link_text: site.link_text,
                             repo: site.repo,
                         }
                     });
+                },
+                getWebp: function(imgUrl) {
+                    return imgUrl + '.webp';
+                },
+                getJpg: function(imgUrl) {
+                    return imgUrl + '.jpg';
                 }
             }
         });
@@ -457,7 +476,7 @@
         particlesJS.load('particles-js', 'particles.json');
 
         document.addEventListener("DOMContentLoaded", function() {
-            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy, source.lazy"));
 
             if ("IntersectionObserver" in window) {
                 let lazyImageObserver = new IntersectionObserver(function(entries, observer) {

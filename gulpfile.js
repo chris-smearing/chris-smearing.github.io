@@ -9,10 +9,13 @@ const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
-var replace = require('gulp-replace');
+const replace = require('gulp-replace');
 const browsersync = require('browser-sync').create();
 const rename = require('gulp-rename');
 
+const imagemin = require('gulp-imagemin');
+const imageminWebp = require('gulp-webp');
+const mozjpeg = require('imagemin-mozjpeg');
 
 // Sass task: compiles the style.scss file into style.css
 function scssTask(){    
@@ -39,6 +42,21 @@ function pageTask(){
     .pipe(browsersync.reload({ stream: true }));
 }
 
+function imageTask() {
+    return src('img/*.jpg')
+        .pipe(
+            imagemin([
+                mozjpeg({
+                    quality: 85, 
+                    progressive: true
+                })
+            ])
+        )
+        .pipe(dest('images'))
+        .pipe(imageminWebp({quality: 85}))
+        .pipe(dest('images'));
+}
+
 // Watch task: watch SCSS and JS files for changes
 // If any change, run scss and js tasks simultaneously
 function watchTask(){
@@ -58,4 +76,5 @@ function browserSync(done) {
   
 // Export the default Gulp task so it can be run
 exports.default = parallel(browserSync, watchTask); // $ gulp
-exports.build = series(scssTask, jsTask); // $ gulp build
+exports.build = series(scssTask, jsTask, imageTask); // $ gulp build
+exports.images = series(imageTask); // $ gulp images
