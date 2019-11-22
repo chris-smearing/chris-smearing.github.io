@@ -13,6 +13,7 @@
     <link rel="canonical" href="https://chris-smearing.github.io" />
 
     <script src="js/bundle.min.js"></script>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>    
     <script src="https://www.google.com/recaptcha/api.js?render=6LcFX6QUAAAAAIFRJOP8QH6nqdirIsbjd7jMbTjm"></script>
 
     <link rel='stylesheet' id='style-css' href='style.min.css' type='text/css' media='all' />
@@ -102,10 +103,9 @@
     <header class="about-me">
         <h1 class="full-name">Chris Smearing</h1>
         <h2>Resume and Portfolio</h2>
-        <picture class="lazy">
-            <source type="image/webp" data-srcset="images/gravatar.webp">
-            <source type="image/jpeg" data-srcset="images/gravatar.jpg">
-            <img class="gravatar" data-srcset="images/gravatar.jpg" alt="photo of me in the wild" width=800 loading="lazy">
+        <picture class="gravatar lozad">
+            <source  type="image/webp" srcset="images/gravatar.webp">
+            <source type="image/jpeg" srcset="images/gravatar.jpg">
         </picture>
 
     </header>
@@ -134,10 +134,9 @@
             <section class="grid">
                 <article v-for="(site, index) in sites" class="grid-item" v-bind:class="{'left':(index % 3 === 0), 'right': (index % 3 === 2), 'center': (index % 3 === 1)}" @click="showDetails(site)">
                     <figure>
-                        <picture class="lazy">
-                            <source type="image/webp" :data-srcset="getWebp(site.screenshot)">
-                            <source type="image/jpeg" :data-srcset="getJpg(site.screenshot)">
-                            <img :data-srcset="getJpg(site.screenshot)" :alt="site.title" loading="lazy">
+                        <picture class="lozad">
+                            <source type="image/webp" :srcset="getWebp(site.screenshot)">
+                            <source type="image/jpeg" :srcset="getJpg(site.screenshot)">
                         </picture>
                     </figure>
                 </article>
@@ -152,7 +151,7 @@
             <div class="service">
                 <article v-for="job in experience" class="service-card center">
                     <header class="service-header">
-                        <img class="logo lazy" :data-src="job.logo" :data-srcset="job.logo" :alt="job.name" loading="lazy">
+                        <img class="logo lozad" :data-src="job.logo" :data-srcset="job.logo" :alt="job.name" loading="lazy">
                     </header>
                     <div class="headline">
                         <h3>{{job.name}}</h3>
@@ -209,7 +208,7 @@
                 </div>
 
                 <input type="hidden" name="_gotcha" />
-                <input type="hidden" name="subject" value="New submission!" />
+                <input type="hidden" name="subject" value="New contact from chris-smearing.github.io" />
                 <input type="hidden" id="captchaResponse" name="g-recaptcha-response" />
 
                 <input type="submit" value="Send">
@@ -480,30 +479,9 @@
         particlesJS.load('particles-js', 'particles.json');
 
         document.addEventListener("DOMContentLoaded", function() {
-            var lazyImages = [].slice.call(document.querySelectorAll(".lazy > source"));
 
-            if ("IntersectionObserver" in window) {
-                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            let lazyImage = entry.target;
-                            lazyImage.srcset = lazyImage.dataset.srcset;
-                            lazyImage.nextElementSibling.srcset = lazyImage.dataset.srcset;
-                            lazyImage.parentElement.classList.remove("lazy");
-                            lazyImageObserver.unobserve(lazyImage);
-                        }
-                    });
-                });
-
-                lazyImages.forEach(function(lazyImage) {
-                    lazyImageObserver.observe(lazyImage);
-                });
-            } else {
-                // Not supported, load all images immediately
-                lazyImages.forEach(function(image){
-                    image.nextElementSibling.src = image.nextElementSibling.dataset.srcset;
-                });
-            }
+            const lozadObserver = lozad(); // lazy loads elements with default selector as '.lozad'
+            lozadObserver.observe();
 
             var fadeupCards = [].slice.call(document.querySelectorAll("article.service-card, article.grid-item"));
 

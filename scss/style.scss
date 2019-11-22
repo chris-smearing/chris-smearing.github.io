@@ -85,6 +85,7 @@ $mq-breakpoints: (
         text-align: center;
         height: auto;
         border-radius: 50%;
+        overflow: hidden;
         
         @include mq($from: tablet) {
             top: 2rem;
