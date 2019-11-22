@@ -92,6 +92,6 @@ function browserSync(done) {
   
 // Export the default Gulp task so it can be run
 exports.default = parallel(browserSync, watchTask); // $ gulp
-exports.build = series(scssTask, jsTask, imageTask); // $ gulp build
+exports.build = series(scssTask, jsTask, imageLqipTask, imageTask); // $ gulp build
 exports.images = series(imageTask); // $ gulp images
-exports.images_lqip = series(imageLqipTask); // $ gulp images
+exports.images_lqip = series(imageLqipTask); // $ gulp images_lqip
