@@ -91,6 +91,8 @@
         - Normalize - https://github.com/necolas/normalize.css
         - https://technicalseo.com/tools/schema-markup-generator/
         - design inspiration from https://dribbble.com
+        - Particles.js from https://github.com/VincentGarreau/particles.js
+        - lazysizes.js from https://github.com/aFarkas/lazysizes
     ------------------------------------ -->
 </head>
 
@@ -100,9 +102,10 @@
     <header class="about-me">
         <h1 class="full-name">Chris Smearing</h1>
         <h2>Resume and Portfolio</h2>
-        <picture class="gravatar lozad" style="display: block; min-height: 1rem" data-iesrc="images/gravatar.jpg" data-alt="Photo of me in the wild">
-            <source  type="image/webp" srcset="images/gravatar.webp">
-            <source type="image/jpeg" srcset="images/gravatar.jpg">
+        <picture class="gravatar">
+            <source  type="image/webp" data-srcset="images/gravatar.webp">
+            <source type="image/jpeg" data-srcset="images/gravatar.jpg">
+            <img class="lazyload" data-src="images/gravatar.jpg" alt="Photo of me in the wild">
         </picture>
 
     </header>
@@ -131,9 +134,10 @@
             <section class="grid">
                 <article v-for="(site, index) in sites" class="grid-item" v-bind:class="{'left':(index % 3 === 0), 'right': (index % 3 === 2), 'center': (index % 3 === 1)}" @click="showDetails(site)">
                     <figure>
-                        <picture class="lozad" style="display: block; min-height: 1rem" :data-iesrc="getJpg(site.screenshot)">
-                            <source type="image/webp" :srcset="getWebp(site.screenshot)">
-                            <source type="image/jpeg" :srcset="getJpg(site.screenshot)">
+                        <picture>
+                            <source type="image/webp" :data-srcset="getWebp(site.screenshot)">
+                            <source type="image/jpeg" :data-srcset="getJpg(site.screenshot)">
+                            <img class="lazyload" :src="getLqip(site.screenshot)" :data-src="getJpg(site.screenshot)" :alt="site.title">
                         </picture>
                     </figure>
                 </article>
@@ -148,7 +152,7 @@
             <div class="service">
                 <article v-for="job in experience" class="service-card center">
                     <header class="service-header">
-                        <img class="logo lozad" :data-src="job.logo" :data-srcset="job.logo" :alt="job.name" loading="lazy">
+                        <img class="logo lazyload" :data-src="job.logo" :data-srcset="job.logo" :alt="job.name" loading="lazy">
                     </header>
                     <div class="headline">
                         <h3>{{job.name}}</h3>
@@ -299,7 +303,7 @@
                     </picture>
                         
                     <h3>What I did:</h3>
-                    <p>{{ description }}</p>
+                    <p><span v-html="description"></span></p>
                     <div class="links">
                         <a class="site-link" :href="link" target="_blank">{{ link_text }}</a>
                         <a v-if="repo" class="site-link" :href="repo" target="_blank">View repo</a>
@@ -350,7 +354,7 @@
                         address: '//chris-smearing.github.io/landing--tyra',
                         title: 'Tyra Beauty',
                         screenshot: 'images/tyra_screenshot',
-                        description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation',
+                        description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank">MJML language framework</a>',
                         link_text: 'See demo',
                         repo: 'https://github.com/chris-smearing/landing--tyra',
                     },
@@ -358,7 +362,7 @@
                         address: '//chris-smearing.github.io/landing--westmore',
                         title: 'Westmore Beauty',
                         screenshot: 'images/westmore_screenshot',
-                        description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation',
+                        description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank">MJML language framework</a>',
                         link_text: 'See demo',
                         repo: 'https://github.com/chris-smearing/landing--westmore',
                     },
@@ -372,13 +376,13 @@
                         address: 'https://bravewomentravel.com',
                         title: 'Brave Women Travel',
                         screenshot: 'images/brave_women_travel_screenshot',
-                        description: 'WordPress site development, responsive template development, ACF integration',
+                        description: 'WordPress site development, responsive template development, <a href="https://www.advancedcustomfields.com/" target="_blank">Advanced Custom Fields</a> integration',
                     },
                     {
                         address: 'http://servicecityenergy.com',
                         title: 'Service City Energy',
                         screenshot: 'images/service_city_screenshot',
-                        description: 'Hosting setup, Landing page development with Pro theme, Slider Revolution customization',
+                        description: 'Hosting setup, Landing page development with <a href="https://theme.co/pro" target="_blank">Pro theme</a>, Slider Revolution customization',
                     },
                     {
                         address: 'https://drvims.com',
@@ -472,6 +476,9 @@
                 },
                 getJpg: function(imgUrl) {
                     return imgUrl + '.jpg';
+                },
+                getLqip: function(imgUrl) {
+                    return imgUrl + '-lqip.jpg';
                 }
             }
         });
@@ -479,9 +486,6 @@
         particlesJS.load('particles-js', 'particles.json');
 
         document.addEventListener("DOMContentLoaded", function() {
-
-            const lozadObserver = lozad(); // lazy loads elements with default selector as '.lozad'
-            lozadObserver.observe();
 
             var fadeupCards = [].slice.call(document.querySelectorAll("article.service-card, article.grid-item"));
 

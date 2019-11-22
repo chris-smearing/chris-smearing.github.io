@@ -57,6 +57,22 @@ function imageTask() {
         .pipe(dest('images'));
 }
 
+function imageLqipTask() {
+    return src('img/*.jpg')
+        .pipe(rename(function (path) {
+            path.basename += "-lqip";
+        }))
+        .pipe(
+            imagemin([
+                mozjpeg({
+                    quality: 10, 
+                    progressive: true
+                })
+            ])
+        )
+        .pipe(dest('images'))
+}
+
 // Watch task: watch SCSS and JS files for changes
 // If any change, run scss and js tasks simultaneously
 function watchTask(){
@@ -78,3 +94,4 @@ function browserSync(done) {
 exports.default = parallel(browserSync, watchTask); // $ gulp
 exports.build = series(scssTask, jsTask, imageTask); // $ gulp build
 exports.images = series(imageTask); // $ gulp images
+exports.images_lqip = series(imageLqipTask); // $ gulp images
