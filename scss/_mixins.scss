@@ -13,36 +13,38 @@
 // Text over an hr such as: --------- Free Shipping ---------- 
 //************************************************************************//
 @mixin bg-strike($color) {
-    @include mq($from: tablet) {
-        display: block;
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap; 
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap; 
 
-        > span {
+    > span {
 
-            position: relative;
-            display: inline-block;
+        position: relative;
+        display: inline-block;
 
-            &:before,
-            &:after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                width: 150%;
-                height: 1px;
-                background: $color;
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 50%;
+            height: 1px;
+            background: $color;
+
+            @include mq($from: tablet) {
+                width: 125%;
             }
+        }
 
-            &:before {
-                right: 100%;
-                margin-right: 15px;
-            }
+        &:before {
+            right: 100%;
+            margin-right: 15px;
+        }
 
-            &:after {
-                left: 100%;
-                margin-left: 15px;
-            }
+        &:after {
+            left: 100%;
+            margin-left: 15px;
         }
     }
 }
