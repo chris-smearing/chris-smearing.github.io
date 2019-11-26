@@ -539,11 +539,14 @@ footer {
 }
 
 .vuedal {
-    background-color: #f0f0f0;
-    width: 95%;
+    width: 95% !important;
+
+    @include mq($from: tablet) {
+        width: 80% !important;
+    }
 
     @include mq($from: desktop) {
-        width: 60%;
+        width: 60% !important;
     }
 
     header {
