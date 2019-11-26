@@ -27,11 +27,7 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "index.html",
-    "revision": "ac6aa4873b8cf582b19147683fa027ea"
-  },
-  {
-    "url": "offline.html",
-    "revision": "744887806c78e7dd06ee4f2b573b4d3a"
+    "revision": "be34ebbee70372a9cae9cbcfad2e5f2f"
   },
   {
     "url": "js/bundle.min.js",

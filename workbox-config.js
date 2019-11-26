@@ -2,7 +2,6 @@ module.exports = {
     "globDirectory": ".",
     "globPatterns": [
         "index.html",
-        "offline.html",
         "js/bundle.min.js",
         "images/*",
         "img/laptop-javascript.jpg",
