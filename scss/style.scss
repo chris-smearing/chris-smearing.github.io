@@ -539,16 +539,6 @@ footer {
 }
 
 .vuedal {
-    width: 95% !important;
-
-    @include mq($from: tablet) {
-        width: 80% !important;
-    }
-
-    @include mq($from: desktop) {
-        width: 60% !important;
-    }
-
     header {
         .title, h3 {
             font-weight: normal;
