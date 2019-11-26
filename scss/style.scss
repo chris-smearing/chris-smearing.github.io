@@ -183,10 +183,12 @@ $mq-breakpoints: (
             @include mq($from: tablet) {
                 flex: 1 1 45%;
 
-                &-card {
-                    &.right {
-                        transform: translateX(200px);
-                    }
+                &.right {
+                    transform: translateX(200px);
+                }
+                &.fade-up {
+                    opacity: 1;
+                    transform: translate(0, 0);
                 }
             }
             @include mq($from: desktop) {
@@ -301,11 +303,13 @@ $mq-breakpoints: (
             @include mq($from: tablet) {
                 flex: 0 1 45%;
 
-                &-item {
-                    &.right {
-                        transform: translateX(200px);
-                    }
-                }    
+                &.right {
+                    transform: translateX(200px);
+                }
+                &.fade-up {
+                    opacity: 1;
+                    transform: translate(0, 0);
+                }
             }
             @include mq($from: desktop) {
                 flex: 0 1 30%;
