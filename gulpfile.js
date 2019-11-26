@@ -85,7 +85,8 @@ function browserSync(done) {
     browsersync.init({
       server: {
           baseDir: "./"
-      }
+      },
+      https: true
     });
     done();
 }
