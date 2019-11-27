@@ -47,5 +47,18 @@
             margin-left: 15px;
         }
     }
+
+    &.narrow > span {
+        &:before,
+        &:after {
+            width: 10%;
+            @include mq($from: tablet) {
+                width: 60%;
+            }
+            @include mq($from: desktop) {
+                width: 75%;
+            }
+        }
+    }
 }
 

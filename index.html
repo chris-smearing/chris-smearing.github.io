@@ -12,6 +12,8 @@
     <meta name="msvalidate.01" content="0F95A6D4B6FBCD7F887B45007C798789" />
     <link rel="canonical" href="https://chris-smearing.github.io" />
 
+    <link href="https://unpkg.com/vueperslides/dist/vueperslides.css" rel="stylesheet">
+
     <link rel='stylesheet' id='style-css' href='style.min.css' type='text/css' media='all' />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -122,6 +124,14 @@
                     </div>
                 </article>
             </div>
+        </section>
+
+        <section class="testimonials">
+            <h2 class="narrow"><span>What Others Say</span></h2>
+            <vueper-slides pause-on-hover fade :breakpoints="sliderBreakpoints" class="no-shadow" :slide-ratio="0.2" >
+                <vueper-slide v-for="(slide, i) in testimonials" :key="i" :content="getPerson(slide.name)" :title="slide.content">
+                </vueper-slide>
+            </vueper-slides>
         </section>
 
         <section class="work">
@@ -451,6 +461,36 @@
                         ],
                     },
                 ],
+                testimonials: [
+                {
+                        name: "Matt S.",
+                        content: "His exceptional effort and dedication to the team directly contributed to making our last project successful.",
+                    },
+                    {
+                        name: "George P.",
+                        content: "Chris is quick learner, very resourceful, enthusiastic and self motivated.",
+                    },
+                    {
+                        name: "Larry D.",
+                        content: "Chris has a wide range of skills and knowledge and he is very proactive in using newer, more efficient techniques and methods.",
+                    },
+                    {
+                        name: "Wennie A.",
+                        content: "Chris is a person whom you can count on to deliver when promised.",
+                    },
+                    {
+                        name: "Mark F.",
+                        content: "The highest compliment I can give anyone is that I would enjoy working with them again and Chris is definitely in that category."
+                    }
+                ],
+                sliderBreakpoints: {
+                    1024: {
+                        slideRatio: 0.3
+                    },
+                    600: {
+                        slideRatio: 0.5
+                    },
+                },                
             },
             methods: {
                 showDetails: function (site) {
@@ -476,7 +516,10 @@
                 },
                 getLqip: function(imgUrl) {
                     return imgUrl + '-lqip.jpg';
-                }
+                },
+                getPerson: function(name) {
+                    return "&mdash; " + name;
+                },
             }
         });
 

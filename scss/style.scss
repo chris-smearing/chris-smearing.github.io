@@ -237,12 +237,50 @@ $mq-breakpoints: (
     }
 }
 
+.testimonials {
+    @include fullBleed();
+    
+    h2 > span {
+        &.before, &.after {
+            width: 50%;
+        }
+    }
+    .vueperslides {
+        background-color: #8AACAF;
+        color: white;
+
+        .vueperslide__content-wrapper {
+            width: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            line-height: 1.5;
+
+            .vueperslide__content {
+                line-height: 1.8;
+                font-size: 125%;
+                font-style: italic;
+                font-weight: bold;
+            }
+        }
+        .vueperslides__bullet--active {
+            border-width: 0;
+            background-color: white;
+        }
+
+        .vueperslides__arrows {
+            .vueperslides__arrow--prev {
+                left: -0.5em;
+            }
+            .vueperslides__arrow--next {
+                right: -0.5em;
+            }        
+        }
+    }
+}
 .work {
     display: block;
     
-    h2 {
-        @include bg-strike(#e4e4e4);
-    }
     .grid {
         display: flex;
         flex-direction: row;
@@ -590,3 +628,4 @@ footer {
         }
     }
 }
+
