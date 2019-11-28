@@ -30,6 +30,8 @@ $mq-breakpoints: (
 @import "vendor/hover/hacks";
 @import "vendor/hover/effects/shadow-and-glow-transitions/grow-shadow";
 @import "vendor/hover/effects/shadow-and-glow-transitions/shadow";
+@import "vendor/hover/effects/2d-transitions/bounce-in";
+@import "vendor/hover/effects/2d-transitions/grow";
 
 
 .hidden {
@@ -150,10 +152,10 @@ $mq-breakpoints: (
                 img, i {
                     max-height: 48px;
                     margin: 1rem;
+                    transition: all 0.3s ease-in-out;
                 }
                 i {
                     color: #555555;
-                    transition: color 0.175s ease-in;
                 }
             }
 
@@ -174,9 +176,9 @@ $mq-breakpoints: (
             }
 
             &:hover {
-                i {
+                i, img {
                     color: darken(#555555, 20%);
-                    transition: color 0.175s ease-in;
+                    transform: scale(1.2);
                 }
             }
 
@@ -297,7 +299,7 @@ $mq-breakpoints: (
             @include shadow();
 
             opacity: 0;
-            transition: all 0.75s;
+            transition: all 0.3s ease-in-out;
 
             &.center {
                 transform: translateY(100px);
@@ -315,9 +317,10 @@ $mq-breakpoints: (
 
             figure {
                 position: relative;
+                transition: all 0.3s ease-in-out;
 
                 &:after {
-                    display: none;
+                    opacity: 0;
                     content: '\f31e';
                     font-family: "Font Awesome 5 Free";
                     font-weight: 900;
@@ -329,12 +332,13 @@ $mq-breakpoints: (
                     color: black;
                     z-index: 999;
                     transform: translate(-50%, -50%);
+                    transition: all 0.3s ease-in-out;
                 }
                 &:hover {
                     background: white;
                     opacity: 0.7;
                     &:after {
-                        display: block;
+                        opacity: 1;
                     }
                 }
             }
@@ -366,6 +370,7 @@ $mq-breakpoints: (
         color: transparent;
         margin: 0 auto;
         display: block;
+        @include bounce-in();
     }
 }
 
