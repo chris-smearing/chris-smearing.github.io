@@ -16,17 +16,33 @@ const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const imageminWebp = require('gulp-webp');
 const mozjpeg = require('imagemin-mozjpeg');
+const extractMediaQuery = require('postcss-extract-media-query');
 
 // Sass task: compiles the style.scss file into style.css
-function scssTask(){    
+function scssBuildTask(){    
     return src('scss/style.scss')
         .pipe(sourcemaps.init()) // initialize sourcemaps first
         .pipe(sass({ outputStyle: 'compressed' })) // compile SCSS to CSS
-        // .pipe(postcss([ autoprefixer(), cssnano() ])) // PostCSS plugins
+        .pipe(postcss([ extractMediaQuery({
+            queries: {
+                '(min-width: 46.25em)': 'tablet',
+                '(min-width: 61.25em)': 'desktop',
+                '(min-width: 81.25em)': 'wide'
+            },
+            output: {
+                name: '[name]-[query].min.[ext]',
+                path: '.'
+            },
+        }) ])) // PostCSS plugins
         .pipe(rename('style.min.css'))
         .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
-        .pipe(dest('.'))
+        .pipe(dest('.'));
+}
+
+function scssWatchTask(){
+    return scssBuildTask()
         .pipe(browsersync.reload({ stream: true }));
+
 }
 
 // JS task: concatenates and uglifies JS files to script.js
@@ -43,7 +59,7 @@ function pageTask(){
 }
 
 function imageTask() {
-    return src('img/*.jpg')
+    return src(['img/*.jpg', '!img/laptop-javascript.jpg'])
         .pipe(
             imagemin([
                 mozjpeg({
@@ -55,6 +71,19 @@ function imageTask() {
         .pipe(dest('images'))
         .pipe(imageminWebp({quality: 85}))
         .pipe(dest('images'));
+}
+
+function heroImageTask() {
+    return src('img/laptop-javascript.jpg')
+        .pipe(
+            imagemin([
+                mozjpeg({
+                    quality: 60, 
+                    progressive: true
+                })
+            ])
+        )
+        .pipe(dest('images'))
 }
 
 function imageLqipTask() {
@@ -76,7 +105,7 @@ function imageLqipTask() {
 // Watch task: watch SCSS and JS files for changes
 // If any change, run scss and js tasks simultaneously
 function watchTask(){
-    watch('scss/**/*.scss', series(scssTask));
+    watch('scss/**/*.scss', series(scssWatchTask));
     watch(['js/**/*.min.js', '!js/bundle.min.js'], series(jsTask));
     watch('index.html', series(pageTask));
 }
@@ -93,6 +122,7 @@ function browserSync(done) {
   
 // Export the default Gulp task so it can be run
 exports.default = parallel(browserSync, watchTask); // $ gulp
-exports.build = series(scssTask, jsTask, imageLqipTask, imageTask); // $ gulp build
-exports.images = series(imageTask); // $ gulp images
+exports.css = series(scssBuildTask); // $ gulp css
+exports.build = series(scssBuildTask, imageLqipTask, imageTask); // $ gulp build
+exports.images = series(heroImageTask, imageTask); // $ gulp images
 exports.images_lqip = series(imageLqipTask); // $ gulp images_lqip

@@ -38,7 +38,7 @@ $mq-breakpoints: (
     display: none;
 }
 #particles-js {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("img/laptop-javascript.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("images/laptop-javascript.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -149,10 +149,18 @@ $mq-breakpoints: (
                 align-items: center;
                 justify-content: center;
 
-                img, i {
+                img, i, svg {
                     max-height: 48px;
                     margin: 1rem;
                     transition: all 0.3s ease-in-out;
+                }
+                svg {
+                    .lighter {
+                        fill: #555555;
+                    }
+                    .darker {
+                        fill: #383838;
+                    }
                 }
                 i {
                     color: #555555;
@@ -171,14 +179,22 @@ $mq-breakpoints: (
 
                 &:last-of-type {
                     padding: 0 2rem 1rem;
-                    margin: 0 auto 1rem;
+                    margin: 1.5rem auto 1rem;
                 }
             }
 
             &:hover {
-                i, img {
-                    color: darken(#555555, 20%);
+                i, img, svg {
+                    color: #AF566F;
                     transform: scale(1.2);
+                }
+                svg {
+                    .lighter {
+                        fill: lighten(#AF566F, 10%);
+                    }
+                    .darker {
+                        fill: #AF566F;
+                    }
                 }
             }
 
@@ -204,7 +220,7 @@ $mq-breakpoints: (
 
             &:after {
                 content: '';
-                background-color: #d8d0d0;
+                background-color: lighten(#AF566F, 30%);
                 height: 3px;
                 width: 70px;
                 position: absolute;
@@ -543,7 +559,7 @@ footer {
             display: flex;
             justify-content: space-between;
             a {
-                color: #555555;
+                color: #AF566F;
             }
             @include mq($from: tablet) {
                 width: 10%;
@@ -590,7 +606,7 @@ footer {
     }
     .fa-vuejs {
         vertical-align: bottom;
-        color: #555;
+        color: #AF566F;
         @include mq($from: tablet) {
             margin-top: 1rem;
         }

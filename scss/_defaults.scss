@@ -38,9 +38,11 @@ h1, h2 {
     color: #444;
 }
 
+$strikeColor: lighten(#AF566F, 30%);
+
 h2 {
     margin: 0;
-    @include bg-strike(#d8d0d0);
+    @include bg-strike($strikeColor);
     font-weight: normal;
     letter-spacing: 0.1em;
 }
@@ -64,7 +66,7 @@ p, li {
 }
 
 footer {
-    svg, i {
+    svg, i, img {
         transition: all 0.3s ease-in-out;
         &:hover {
             transform: scale(1.2);

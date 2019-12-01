@@ -12,11 +12,14 @@
     <meta name="msvalidate.01" content="0F95A6D4B6FBCD7F887B45007C798789" />
     <link rel="canonical" href="https://chris-smearing.github.io" />
 
-    <link href="https://unpkg.com/vueperslides/dist/vueperslides.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="vueperslides.min.css" media="screen" title="vueperslides default styles">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.min.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 46.25em)" href="style-tablet.min.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 61.25em)" href="style-desktop.min.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 81.25em)" href="style-wide.min.css">
 
-    <link rel='stylesheet' id='style-css' href='style.min.css' type='text/css' media='all' />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 
@@ -58,8 +61,7 @@
                         "postalCode": "75023",
                         "streetAddress": "6550 Chase Oaks Blvd"
                     }
-                }
-            ]
+                }]
         }
     </script>
 
@@ -91,6 +93,8 @@
         - design inspiration from https://dribbble.com
         - Particles.js from https://github.com/VincentGarreau/particles.js
         - lazysizes.js from https://github.com/aFarkas/lazysizes
+        - Vueper Slides Vue slider from https://github.com/antoniandre/vueper-slides
+        - icons and images from upwork.com, ti.com, shopify.com, namecheap.com
     ------------------------------------ -->
 </head>
 
@@ -143,7 +147,7 @@
                         <picture>
                             <source type="image/webp" :data-srcset="getWebp(site.screenshot)">
                             <source type="image/jpeg" :data-srcset="getJpg(site.screenshot)">
-                            <img class="lazyload" :src="getLqip(site.screenshot)" :data-src="getJpg(site.screenshot)" :alt="site.title">
+                            <img class="lazyload" :data-src="getJpg(site.screenshot)" :alt="site.title">
                         </picture>
                     </figure>
                 </article>
@@ -232,14 +236,14 @@
             <div class="affiliates">
                 <div class="digital-ocean">
                     <a href="https://m.do.co/c/fba3a9d78fff" target="_blank" rel="noopener">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1.4 1201.4 1201.4"><path fill="#555" d="M600 1200V968c248 0 436-244 344-504-36-96-112-172-208-208-260-92-504 96-504 344H0C0 208 380-100 792 28c180 56 324 200 380 380 128 412-180 792-572 792z"/><path fill="#555" d="M600 968H368V736h232zm-232 180H192V968h176zM192 968H40V820h152z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1.4 1201.4 1201.4"><path fill="#AF566F" d="M600 1200V968c248 0 436-244 344-504-36-96-112-172-208-208-260-92-504 96-504 344H0C0 208 380-100 792 28c180 56 324 200 380 380 128 412-180 792-572 792z"/><path fill="#AF566F" d="M600 968H368V736h232zm-232 180H192V968h176zM192 968H40V820h152z"/></svg>
                         <p>I use and recommend Digital Ocean.</p><p>Click here for a $50 credit!</p>
                     </a>
                 </div>
     
                 <div class="namecheap">
                     <a href="http://www.dpbolvw.net/9b108gv30v2IRMKNSKSIKKNLPONO" target="_blank" rel="noopener">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 258 46.57"><defs><linearGradient id="a" x1="59.99" y1="44.16" x2="80.01" y2="1.23" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#d4202c"/><stop offset="0.1" stop-color="#dc3d29" stop-opacity="0.79"/><stop offset="0.2" stop-color="#e45926" stop-opacity="0.58"/><stop offset="0.32" stop-color="#ea7123" stop-opacity="0.4"/><stop offset="0.43" stop-color="#f08521" stop-opacity="0.25"/><stop offset="0.55" stop-color="#f4941f" stop-opacity="0.14"/><stop offset="0.68" stop-color="#f79f1e" stop-opacity="0.06"/><stop offset="0.82" stop-color="#f8a51d" stop-opacity="0.02"/><stop offset="1" stop-color="#f9a71d" stop-opacity="0"/></linearGradient><linearGradient id="b" x1="1777.48" y1="1048.76" x2="1797.5" y2="1005.83" gradientTransform="translate(1803.5 1052.6) rotate(180)" xlink:href="#a"/></defs><title>cn-logo</title><path d="M77.17.71a7.87,7.87,0,0,0-6.88,4.05l-.16.33L64,17.25l-7.8,15.37,5.11,10.07.28.55A8,8,0,0,0,65,46.47a8.05,8.05,0,0,0,3.41-3.23l.28-.55L84,12.48l.37-.73a7.86,7.86,0,0,0-7.19-11Z" transform="translate(-1 -0.71)" fill="#ff5100"/><path d="M29.85,15.34l-5.1-10-.28-.55a7.89,7.89,0,0,0-3.4-3.22,7.92,7.92,0,0,0-3.4,3.21l-.29.56L2.05,35.52l-.37.72a7.86,7.86,0,0,0,14.06,7l.17-.32,6.17-12.16L29.87,15.4Z" transform="translate(-1 -0.71)" fill="#ff5100"/><path d="M77.15.71a7.86,7.86,0,0,0-6.87,4.05l-.17.33L63.94,17.25,56.13,32.62l5.12,10.07.28.55a7.94,7.94,0,0,0,3.41,3.23,7.94,7.94,0,0,0,3.41-3.23l.29-.55L84,12.48l.36-.73a7.86,7.86,0,0,0-7.19-11Z" transform="translate(-1 -0.71)" fill="url(#a)"/><path d="M8.86,47.29a7.86,7.86,0,0,0,6.87-4l.17-.33,6.18-12.16,7.8-15.37L24.77,5.31l-.28-.55a8,8,0,0,0-3.42-3.23,8,8,0,0,0-3.41,3.23l-.28.55L2,35.52l-.37.73a7.86,7.86,0,0,0,7.19,11Z" transform="translate(-1 -0.71)" fill="url(#b)"/><path d="M29.85,15.34l-5.1-10-.28-.55a7.94,7.94,0,0,0-3.41-3.23A8.31,8.31,0,0,1,22.55,1a8.16,8.16,0,0,1,2-.25H35.23a7.92,7.92,0,0,1,6.86,4l.28.55L56.18,32.66l5.09,10,.28.55A8,8,0,0,0,65,46.47a8.05,8.05,0,0,1-3.47.81H50.79a7.91,7.91,0,0,1-6.85-4l-.29-.55Z" transform="translate(-1 -0.71)" fill="#ff8c44"/><path d="M98,24.53a.76.76,0,0,1,.84-.84h.6a.75.75,0,0,1,.8.84v1.94a5.75,5.75,0,0,1-.13,1.21h.07a7.43,7.43,0,0,1,6.8-4.39c4.19,0,5.66,2.38,5.66,6.53v9.89a.76.76,0,0,1-.84.84h-.63a.74.74,0,0,1-.81-.84V30.43c0-2.65-.43-5-3.68-5-3.59,0-6.4,2.95-6.4,6.88v7.4a.74.74,0,0,1-.81.84h-.63a.76.76,0,0,1-.84-.84Z" transform="translate(-1 -0.71)" fill="#6e6f71"/><path d="M124.89,30.23h1v-.54c0-3.25-1.78-4.36-4.16-4.36a8,8,0,0,0-4.09,1.18.79.79,0,0,1-1.13-.27l-.21-.34a.76.76,0,0,1,.24-1.14,10.34,10.34,0,0,1,5.36-1.47c4,0,6.27,2.24,6.27,6.47v10a.74.74,0,0,1-.81.84h-.53a.75.75,0,0,1-.84-.84V38.37a7.14,7.14,0,0,1,.1-1.27H126A6.25,6.25,0,0,1,120.3,41c-2.85,0-5.7-1.67-5.7-4.92C114.6,30.53,121.64,30.23,124.89,30.23ZM120.7,39c3.25,0,5.16-3.35,5.16-6.3v-.8h-.94c-2.65,0-8,.1-8,3.88C116.94,37.4,118.19,39,120.7,39Z" transform="translate(-1 -0.71)" fill="#6e6f71"/><path d="M131.39,24.53a.76.76,0,0,1,.84-.84h.6a.75.75,0,0,1,.8.84v1.94a5.75,5.75,0,0,1-.13,1.21h.07a7.15,7.15,0,0,1,6.2-4.39c3.11,0,4.72,1.44,5.19,4.22H145a7.16,7.16,0,0,1,6.2-4.22c4.09,0,5.59,2.38,5.59,6.53v9.89a.76.76,0,0,1-.83.84h-.61a.76.76,0,0,1-.84-.84V30.39c0-2.74-.56-5-3.61-5-3.39,0-5.67,3.55-5.67,7v7.3a.73.73,0,0,1-.8.84h-.64a.76.76,0,0,1-.84-.84V30.39c0-2.54-.37-5-3.55-5-3.42,0-5.76,3.62-5.76,7v7.3a.74.74,0,0,1-.81.84h-.63a.76.76,0,0,1-.84-.84Z" transform="translate(-1 -0.71)" fill="#6e6f71"/><path d="M167.28,23.29c4.49,0,7,3.25,7,8a.84.84,0,0,1-.88.84H161.31c.1,4.29,3.05,6.74,6.54,6.74a7.17,7.17,0,0,0,4.42-1.55.7.7,0,0,1,1.11.2l.27.41a.78.78,0,0,1-.24,1.1A9.51,9.51,0,0,1,167.78,41,8.51,8.51,0,0,1,159,32.14C159,26.61,162.72,23.29,167.28,23.29ZM172,30.46c-.14-3.55-2.28-5.3-4.8-5.3a5.82,5.82,0,0,0-5.8,5.3Z" transform="translate(-1 -0.71)" fill="#6e6f71"/><path d="M185.17,23.29a8.84,8.84,0,0,1,5.6,1.91.72.72,0,0,1,.1,1.14l-.23.37c-.3.47-.67.47-1.14.17a7,7,0,0,0-4.26-1.55,6.5,6.5,0,0,0-6.57,6.81,6.5,6.5,0,0,0,6.6,6.77A7.35,7.35,0,0,0,190,37.13a.67.67,0,0,1,1.11.2l.23.34a.8.8,0,0,1-.2,1.13,9.32,9.32,0,0,1-6,2.15,8.53,8.53,0,0,1-8.84-8.81A8.59,8.59,0,0,1,185.17,23.29Z" transform="translate(-1 -0.71)" fill="#6e6f71"/><path d="M193.65,17.83a.73.73,0,0,1,.8-.84h.64a.76.76,0,0,1,.84.84v8.41a7.18,7.18,0,0,1-.13,1.37h.06a7.43,7.43,0,0,1,6.74-4.32c4.19,0,5.66,2.38,5.66,6.53v9.89c0,.54-.26.84-.8.84h-.64a.76.76,0,0,1-.84-.84V30.43c0-2.65-.4-5-3.68-5-3.55,0-6.37,2.92-6.37,7v7.3a.76.76,0,0,1-.84.84h-.64a.73.73,0,0,1-.8-.84Z" transform="translate(-1 -0.71)" fill="#6e6f71"/><path d="M218.75,23.29c4.49,0,7,3.25,7,8a.84.84,0,0,1-.87.84H212.79c.1,4.29,3.05,6.74,6.53,6.74a7.2,7.2,0,0,0,4.43-1.55.69.69,0,0,1,1.1.2l.27.41a.78.78,0,0,1-.23,1.1A9.57,9.57,0,0,1,219.26,41a8.52,8.52,0,0,1-8.82-8.81C210.44,26.61,214.19,23.29,218.75,23.29Zm4.73,7.17c-.13-3.55-2.28-5.3-4.8-5.3a5.8,5.8,0,0,0-5.79,5.3Z" transform="translate(-1 -0.71)" fill="#6e6f71"/><path d="M237.12,30.23h1v-.54c0-3.25-1.78-4.36-4.16-4.36a7.85,7.85,0,0,0-4.08,1.18.8.8,0,0,1-1.14-.27l-.2-.34a.76.76,0,0,1,.23-1.14,10.34,10.34,0,0,1,5.36-1.47c4,0,6.27,2.24,6.27,6.47v10a.74.74,0,0,1-.81.84H239a.75.75,0,0,1-.84-.84V38.37a7.14,7.14,0,0,1,.1-1.27h-.07A6.25,6.25,0,0,1,232.53,41c-2.85,0-5.7-1.67-5.7-4.92C226.83,30.53,233.87,30.23,237.12,30.23ZM232.93,39c3.25,0,5.16-3.35,5.16-6.3v-.8h-.94c-2.65,0-8,.1-8,3.88C229.17,37.4,230.41,39,232.93,39Z" transform="translate(-1 -0.71)" fill="#6e6f71"/><path d="M243.65,24.53a.74.74,0,0,1,.81-.84H245a.72.72,0,0,1,.81.77v1.21a6,6,0,0,1-.1,1.14h.06a6.28,6.28,0,0,1,5.9-3.52c4.53,0,7.34,3.62,7.34,8.85S255.82,41,251.43,41a6.13,6.13,0,0,1-5.57-3.42h-.06a7.84,7.84,0,0,1,.13,1.48v7.4a.76.76,0,0,1-.84.84h-.63a.74.74,0,0,1-.81-.84Zm7.54,14.38c3,0,5.47-2.48,5.47-6.77,0-4.13-2.22-6.77-5.33-6.77-2.82,0-5.47,2-5.47,6.8C245.86,35.55,247.74,38.91,251.19,38.91Z" transform="translate(-1 -0.71)" fill="#6e6f71"/></svg>
+                        <img src="img/namecheap.png" alt="Namecheap" width="32">
                         <p>I use and recommend Namecheap.</p>
                     </a>
                 </div>
@@ -253,7 +257,11 @@
     </footer>
 
     <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>    
-    <script src="js/bundle.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/lazysizes.min.js" defer></script>
+    <script src="js/particles.min.js" defer></script>
+    <script src="js/vuedals.min.js" defer></script>
+    <script src="js/vueperslides.umd.min.js" defer></script>
     <script src="https://www.google.com/recaptcha/api.js?render=6LcFX6QUAAAAAIFRJOP8QH6nqdirIsbjd7jMbTjm"></script>
 
     <script>
@@ -266,266 +274,275 @@
     </script>
 
     <script>
-        const Bus = Vuedals.Bus;
-        const Component = Vuedals.Component;
-        const Plugin = Vuedals.default;
-        Vue.use(Plugin);
-        
-        const PortfolioModal = {
-
-            name: 'portfolio-modal',
-            props: {
-                headline: {
-                    type: String,
-                }, 
-                screenshotJpg: {
-                    type: String,
-                }, 
-                screenshotWebp: {
-                    type: String,
-                }, 
-                description: {
-                    type: String,
-                }, 
-                link: {
-                    type: String,
-                }, 
-                link_text: {
-                    type: String,
-                    default: 'Go to site',
-                },
-                repo: {
-                    type: String,
-                    default: '',
-                },
-            },
-
-            template: `
-                <div class="modal-bg">
-                    <picture>
-                        <source type="image/webp" :srcset="screenshotWebp">
-                        <source type="image/jpeg" :srcset="screenshotJpg">
-                        <img :src="screenshotJpg" :srcset="screenshotJpg" :alt="headline" loading="lazy">
-                    </picture>
-                        
-                    <h3>What I did:</h3>
-                    <p><span v-html="description"></span></p>
-                    <div class="links">
-                        <a class="site-link" :href="link" target="_blank" rel="noopener">{{ link_text }}</a>
-                        <a v-if="repo" class="site-link" :href="repo" target="_blank" rel="noopener">View repo</a>
-                    </div>
-                </div>`
-        };
-
-        var app = new Vue({
-            components: {
-                vuedals: Component,
-            },
-            el: '#app',
-            data: {
-                services: [
-                    {
-                        name: 'WordPress',
-                        icon: '<i class="fab fa-wordpress fa-3x"></i>',
-                        description: '<p>Theme configuration, responsive template development with HTML5 and CSS3</p>',
-                    },
-                    {
-                        name: 'Shopify',
-                        icon: '<img src="img/shopify-logo.svg" alt="Shopify ecommerce platform">',
-                        description: '<p>Theme configuration, responsive template development with HTML5, CSS3, and Liquid templating</p>',
-                    },
-                    {
-                        name: 'Mailchimp',
-                        icon: '<i class="fab fa-mailchimp fa-3x"></i>',
-                        description: '<p>One-time and automated campaign setup; Creation of email compatible with majority of email clients</p>',
-                    },
-                    {
-                        name: 'HTML5 + CSS3',
-                        icon: '<i class="fas fa-code fa-3x"></i>',
-                        description: '<p>Semantic markup with responsive styling</p>',
-                    },
-                    {
-                        name: 'Hosting Setup',
-                        icon: '<i class="fas fa-desktop fa-3x"></i>',
-                        description: '<p>Complete site setup and configuration</p>',
-                    },
-                    {
-                        name: 'Maintenance and Updates',
-                        icon: '<i class="fas fa-shield-alt fa-3x"></i>',
-                        description: '<p>Install and test updates, ensuring site security and stability</p>',
-                    },
-                ],
-                sites: [
-                    {
-                        address: '//chris-smearing.github.io/landing--tyra',
-                        title: 'Tyra Beauty',
-                        screenshot: 'images/tyra_screenshot',
-                        description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank" rel="noopener">MJML language framework</a>',
-                        link_text: 'See demo',
-                        repo: 'https://github.com/chris-smearing/landing--tyra',
-                    },
-                    {
-                        address: '//chris-smearing.github.io/landing--westmore',
-                        title: 'Westmore Beauty',
-                        screenshot: 'images/westmore_screenshot',
-                        description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank" rel="noopener">MJML language framework</a>',
-                        link_text: 'See demo',
-                        repo: 'https://github.com/chris-smearing/landing--westmore',
-                    },
-                    {
-                        address: 'http://cidregistry.com',
-                        title: 'CID Registry',
-                        screenshot: 'images/cidregistry_screenshot',
-                        description: 'Hosting configuration, WordPress full site build and deployment, responsive template development, custom form development',
-                    },
-                    {
-                        address: 'https://bravewomentravel.com',
-                        title: 'Brave Women Travel',
-                        screenshot: 'images/brave_women_travel_screenshot',
-                        description: 'WordPress site development, responsive template development, <a href="https://www.advancedcustomfields.com/" target="_blank" rel="noopener">Advanced Custom Fields</a> integration',
-                    },
-                    {
-                        address: 'http://servicecityenergy.com',
-                        title: 'Service City Energy',
-                        screenshot: 'images/service_city_screenshot',
-                        description: 'Hosting setup, Landing page development with <a href="https://theme.co/pro" target="_blank" rel="noopener">Pro theme</a>, Slider Revolution customization',
-                    },
-                    {
-                        address: 'https://drvims.com',
-                        title: "Dr. Vim's",
-                        screenshot: 'images/drvims_screenshot',
-                        description: 'Shopify theme development, plugin configuration',
-                    },
-                    {
-                        address: 'https://pzre.com',
-                        title: "Penzance",
-                        screenshot: 'images/penzance_map',
-                        description: 'Complete site development in WordPress with Avada theme, custom Google map with filterable markers, Custom post types for team members and project locations',
-                    },
-                    {
-                        address: 'https://hungryhuy.com',
-                        title: "Hungry Huy",
-                        screenshot: 'images/hungry-huy',
-                        description: 'Header redevelopment, added subscribe form, Cloudflare setup, Retina images setup',
-                    },
-                    {
-                        address: 'https://chaos.club',
-                        title: "Chaos Club",
-                        screenshot: 'images/chaos-club',
-                        description: 'Footer redevelopment, Personalizer style updates, product categorization improvements',
-                    },
-                ],
-                experience: [
-                    {
-                        name: 'Freelance on Upwork',
-                        date: '2017-present',
-                        logo: 'img/upwork-logo.svg',
-                        description: '<ul><li>Mobile-first responsive template development in WordPress and Shopify</li>\
-                        <li>Create custom templates, landing pages, and contact forms; able to create templates by hand or with page builders, such as Divi, Elementor, WP Bakery, Fusion Builder, or Pro theme</li>\
-                        <li>Conversion of graphic designs to templates for desktop and mobile</li>\
-                        <li>Cross-platform and device testing in BrowserStack to debug</li></ul>',
-                        skills: [
-                            'HTML5',
-                            'CSS3 / SCSS',
-                            'PHP / WordPress',
-                            'JavaScript / jQuery',
-                            'Shopify Liquid',
-                            'git',
-                            'Gulp',
-                            'npm',
-                            'Laragon / DesktopServer / XAMPP',
-                        ],
-                    },
-                    {
-                        name: 'Texas Instruments - Consultant',
-                        date: '2017,2019',
-                        logo: 'img/ti-logo.svg',
-                        description: '<p>Created an application in Perl to analyze semiconductor test tool log files and aggregate the information into an Oracle database. The resulting data is then presented to the user via a web app built with mod-perl and Bootstrap 3. Template Toolkit was used for page templates that gave me a foundation in template processing systems.</p>',
-                        skills: [
-                            'Programming languages: Perl, HTML, CSS',
-                            'Software: Apache, Template Toolkit, Bootstrap 3',
-                        ],
-                    },
-                    {
-                        name: 'Texas Instruments',
-                        date: '1998-2015',
-                        logo: 'img/ti-logo.svg',
-                        description: '<p><strong>Embedded Software Design:</strong> Created software for 2 generations of DLP® platforms, eventually leading to sales of over 7 million units. Worked with ASIC and board designers to guarantee proper operation and fulfill the end-product requirements. </p>\
-                        <ul><li>Assisted in the development of first generation products, which spawned the code base for all future platforms. Developed Windows software for device testing and verification.</li> \
-                        <li>Architected and implemented the reference application for second generation products that demonstrated projector system control operation. </li>\
-                        <li>Wrote extensive documentation for the reference application and the underlying ASIC.</li></ul> \
-                        <p><strong>FPGA and ASIC Design:</strong> Utilized the latest generation of design and verification tools to implement various video and image processing algorithms for use in DLP® prototypes and ASICs.</p>',
-                        skills: [
-                            'Programming languages: Assembly, C, C++, Perl, Tcl, Specman E, VHDL',
-                            'Software: ARM RealView, Visual Studio, Eclipse, ModelSim, Cadence simulation and verification, ClearCase, RCS, Altera Quartus, Xilinx ISE, Synplify, µC/OS II, ThreadX RTOS',
-                        ],
-                    },
-                ],
-                testimonials: [
-                {
-                        name: "Matt S.",
-                        content: "His exceptional effort and dedication to the team directly contributed to making our last project successful.",
-                    },
-                    {
-                        name: "George P.",
-                        content: "Chris is quick learner, very resourceful, enthusiastic and self motivated.",
-                    },
-                    {
-                        name: "Larry D.",
-                        content: "Chris has a wide range of skills and knowledge and he is very proactive in using newer, more efficient techniques and methods.",
-                    },
-                    {
-                        name: "Wennie A.",
-                        content: "Chris is a person whom you can count on to deliver when promised.",
-                    },
-                    {
-                        name: "Mark F.",
-                        content: "The highest compliment I can give anyone is that I would enjoy working with them again and Chris is definitely in that category."
-                    }
-                ],
-                sliderBreakpoints: {
-                    1024: {
-                        slideRatio: 0.3
-                    },
-                    600: {
-                        slideRatio: 0.5
-                    },
-                },                
-            },
-            methods: {
-                showDetails: function (site) {
-                    this.$vuedals.open({
-                        title: site.title,
-                        component: PortfolioModal,
-                        props: {
-                            headline: site.title,
-                            screenshotJpg: this.getJpg(site.screenshot),
-                            screenshotWebp: this.getWebp(site.screenshot),
-                            link: site.address,
-                            description: site.description,
-                            link_text: site.link_text,
-                            repo: site.repo,
-                        }
-                    });
-                },
-                getWebp: function(imgUrl) {
-                    return imgUrl + '.webp';
-                },
-                getJpg: function(imgUrl) {
-                    return imgUrl + '.jpg';
-                },
-                getLqip: function(imgUrl) {
-                    return imgUrl + '-lqip.jpg';
-                },
-                getPerson: function(name) {
-                    return "&mdash; " + name;
-                },
-            }
-        });
-
-        particlesJS.load('particles-js', 'particles.json');
-
         document.addEventListener("DOMContentLoaded", function() {
+            const Bus = Vuedals.Bus;
+            const Component = Vuedals.Component;
+            const Plugin = Vuedals.default;
+            Vue.use(Plugin);
+            
+            const PortfolioModal = {
+
+                name: 'portfolio-modal',
+                props: {
+                    headline: {
+                        type: String,
+                    }, 
+                    screenshotJpg: {
+                        type: String,
+                    }, 
+                    screenshotWebp: {
+                        type: String,
+                    }, 
+                    description: {
+                        type: String,
+                    }, 
+                    link: {
+                        type: String,
+                    }, 
+                    link_text: {
+                        type: String,
+                        default: 'Go to site',
+                    },
+                    repo: {
+                        type: String,
+                        default: '',
+                    },
+                },
+
+                template: `
+                    <div class="modal-bg">
+                        <picture>
+                            <source type="image/webp" :srcset="screenshotWebp">
+                            <source type="image/jpeg" :srcset="screenshotJpg">
+                            <img :src="screenshotJpg" :srcset="screenshotJpg" :alt="headline" loading="lazy">
+                        </picture>
+                            
+                        <h3>What I did:</h3>
+                        <p><span v-html="description"></span></p>
+                        <div class="links">
+                            <a class="site-link" :href="link" target="_blank" rel="noopener">{{ link_text }}</a>
+                            <a v-if="repo" class="site-link" :href="repo" target="_blank" rel="noopener">View repo</a>
+                        </div>
+                    </div>`
+            };
+
+            var app = new Vue({
+                components: {
+                    vuedals: Component,
+                },
+                el: '#app',
+                data: {
+                    services: [
+                        {
+                            name: 'WordPress',
+                            icon: '<i class="fab fa-wordpress fa-3x"></i>',
+                            description: '<p>Theme configuration, responsive template development with HTML5 and CSS3, shortcodes, plugins</p>',
+                        },
+                        {
+                            name: 'Shopify',
+                            icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 173.7">\
+                                <path class="lighter"\
+                                    d="M130.7 32.9c-.1-.9-.9-1.3-1.5-1.4-.6-.1-12.6-.2-12.6-.2s-10.1-9.8-11.1-10.8-2.9-.7-3.7-.5c0 0-1.9.6-5.1 1.6-.5-1.7-1.3-3.8-2.4-5.9-3.6-6.9-8.8-10.5-15.2-10.5-.4 0-.9 0-1.3.1-.2-.2-.4-.4-.6-.7-2.8-3-6.3-4.4-10.5-4.3-8.2.2-16.3 6.1-23 16.7-4.7 7.4-8.2 16.7-9.2 23.9-9.4 2.9-16 4.9-16.1 5-4.7 1.5-4.9 1.6-5.5 6.1C12.4 55.3 0 151.4 0 151.4l104.1 18 45.1-11.2S130.8 33.7 130.7 32.9zm-39.2-9.7c-2.4.7-5.1 1.6-8.1 2.5-.1-4.1-.6-9.9-2.5-14.9 6.3 1.2 9.3 8.2 10.6 12.4zM78 27.4c-5.5 1.7-11.4 3.5-17.4 5.4 1.7-6.4 4.9-12.8 8.8-17 1.5-1.6 3.5-3.3 5.9-4.3 2.3 4.7 2.7 11.4 2.7 15.9zM66.8 5.8c1.9 0 3.5.4 4.9 1.3-2.2 1.1-4.4 2.8-6.4 5-5.2 5.6-9.2 14.2-10.8 22.6-5 1.5-9.8 3-14.3 4.4 3-13.2 14-32.9 26.6-33.3z">\
+                                </path>\
+                                <path class="darker"\
+                                    d="M129.2 31.5c-.6-.1-12.6-.2-12.6-.2s-10.1-9.8-11.1-10.8c-.4-.4-.9-.6-1.4-.6v149.5l45.1-11.2S130.8 33.8 130.7 32.9c-.2-.9-.9-1.3-1.5-1.4z">\
+                                </path>\
+                                <path fill="#FFF"\
+                                    d="M79.1 54.7l-5.2 19.6s-5.8-2.7-12.8-2.2c-10.2.6-10.3 7-10.2 8.7.6 8.8 23.6 10.7 24.9 31.2 1 16.2-8.6 27.2-22.4 28.1-16.6 1-25.7-8.7-25.7-8.7l3.5-14.9s9.2 6.9 16.5 6.5c4.8-.3 6.5-4.2 6.3-7-.7-11.4-19.5-10.8-20.7-29.5-1-15.8 9.4-31.8 32.3-33.3 9-.8 13.5 1.5 13.5 1.5z">\
+                                </path>\
+                            </svg>',
+                            description: '<p>Theme configuration, responsive template development with HTML5, CSS3, and Liquid templating</p>',
+                        },
+                        {
+                            name: 'Mailchimp',
+                            icon: '<i class="fab fa-mailchimp fa-3x"></i>',
+                            description: '<p>One-time and automated campaign setup; Creation of email compatible with majority of email clients</p>',
+                        },
+                        {
+                            name: 'HTML5 + CSS3',
+                            icon: '<i class="fas fa-code fa-3x"></i>',
+                            description: '<p>Semantic markup with responsive styling</p>',
+                        },
+                        {
+                            name: 'Hosting Setup',
+                            icon: '<i class="fas fa-desktop fa-3x"></i>',
+                            description: '<p>Complete site setup and configuration</p>',
+                        },
+                        {
+                            name: 'Maintenance and Updates',
+                            icon: '<i class="fas fa-shield-alt fa-3x"></i>',
+                            description: '<p>Install and test updates, ensuring site security and stability</p>',
+                        },
+                    ],
+                    sites: [
+                        {
+                            address: '//chris-smearing.github.io/landing--tyra',
+                            title: 'Tyra Beauty',
+                            screenshot: 'images/tyra_screenshot',
+                            description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank" rel="noopener">MJML language framework</a>',
+                            link_text: 'See demo',
+                            repo: 'https://github.com/chris-smearing/landing--tyra',
+                        },
+                        {
+                            address: '//chris-smearing.github.io/landing--westmore',
+                            title: 'Westmore Beauty',
+                            screenshot: 'images/westmore_screenshot',
+                            description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank" rel="noopener">MJML language framework</a>',
+                            link_text: 'See demo',
+                            repo: 'https://github.com/chris-smearing/landing--westmore',
+                        },
+                        {
+                            address: 'http://cidregistry.com',
+                            title: 'CID Registry',
+                            screenshot: 'images/cidregistry_screenshot',
+                            description: 'Hosting configuration, WordPress full site build and deployment, responsive template development, custom form development',
+                        },
+                        {
+                            address: 'https://bravewomentravel.com',
+                            title: 'Brave Women Travel',
+                            screenshot: 'images/brave_women_travel_screenshot',
+                            description: 'WordPress site development, responsive template development, <a href="https://www.advancedcustomfields.com/" target="_blank" rel="noopener">Advanced Custom Fields</a> integration',
+                        },
+                        {
+                            address: 'http://servicecityenergy.com',
+                            title: 'Service City Energy',
+                            screenshot: 'images/service_city_screenshot',
+                            description: 'Hosting setup, Landing page development with <a href="https://theme.co/pro" target="_blank" rel="noopener">Pro theme</a>, Slider Revolution customization',
+                        },
+                        {
+                            address: 'https://drvims.com',
+                            title: "Dr. Vim's",
+                            screenshot: 'images/drvims_screenshot',
+                            description: 'Shopify theme development, plugin configuration',
+                        },
+                        {
+                            address: 'https://pzre.com',
+                            title: "Penzance",
+                            screenshot: 'images/penzance_map',
+                            description: 'Complete site development in WordPress with Avada theme, custom Google map with filterable markers, Custom post types for team members and project locations',
+                        },
+                        {
+                            address: 'https://hungryhuy.com',
+                            title: "Hungry Huy",
+                            screenshot: 'images/hungry-huy',
+                            description: 'Header redevelopment, added subscribe form, Cloudflare setup, Retina images setup',
+                        },
+                        {
+                            address: 'https://chaos.club',
+                            title: "Chaos Club",
+                            screenshot: 'images/chaos-club',
+                            description: 'Footer redevelopment, Personalizer style updates, product categorization improvements',
+                        },
+                    ],
+                    experience: [
+                        {
+                            name: 'Freelance on Upwork',
+                            date: '2017-present',
+                            logo: 'img/upwork-logo.svg',
+                            description: '<ul><li>Mobile-first responsive template development in WordPress and Shopify</li>\
+                            <li>Create custom templates, landing pages, and contact forms; able to create templates by hand or with page builders, such as Divi, Elementor, WP Bakery, Fusion Builder, or Pro theme</li>\
+                            <li>Conversion of graphic designs to templates for desktop and mobile</li>\
+                            <li>Cross-platform and device testing in BrowserStack to debug</li></ul>',
+                            skills: [
+                                'HTML5',
+                                'CSS3 / SCSS',
+                                'PHP / WordPress',
+                                'JavaScript / jQuery',
+                                'Shopify Liquid',
+                                'git',
+                                'Gulp',
+                                'npm / yarn',
+                                'Laragon / Vagrant / DesktopServer / XAMPP',
+                            ],
+                        },
+                        {
+                            name: 'Texas Instruments - Consultant',
+                            date: '2017,2019',
+                            logo: 'img/ti-logo.svg',
+                            description: '<p>Created an application in Perl to analyze semiconductor test tool log files and aggregate the information into an Oracle database. The resulting data is then presented to the user via a web app built with mod-perl and Bootstrap 3. Template Toolkit was used for page templates that gave me a foundation in template processing systems.</p>',
+                            skills: [
+                                'Programming languages: Perl, HTML, CSS',
+                                'Software: Apache, Template Toolkit, Bootstrap 3',
+                            ],
+                        },
+                        {
+                            name: 'Texas Instruments',
+                            date: '1998-2015',
+                            logo: 'img/ti-logo.svg',
+                            description: '<p><strong>Embedded Software Design:</strong> Created software for 2 generations of DLP® platforms, eventually leading to sales of over 7 million units. Worked with ASIC and board designers to guarantee proper operation and fulfill the end-product requirements. </p>\
+                            <ul><li>Assisted in the development of first generation products, which spawned the code base for all future platforms. Developed Windows software for device testing and verification.</li> \
+                            <li>Architected and implemented the reference application for second generation products that demonstrated projector system control operation. </li>\
+                            <li>Wrote extensive documentation for the reference application and the underlying ASIC.</li></ul> \
+                            <p><strong>FPGA and ASIC Design:</strong> Utilized the latest generation of design and verification tools to implement various video and image processing algorithms for use in DLP® prototypes and ASICs.</p>',
+                            skills: [
+                                'Programming languages: Assembly, C, C++, Perl, Tcl, Specman E, VHDL',
+                                'Software: ARM RealView, Visual Studio, Eclipse, ModelSim, Cadence simulation and verification, ClearCase, RCS, Altera Quartus, Xilinx ISE, Synplify, µC/OS II, ThreadX RTOS',
+                            ],
+                        },
+                    ],
+                    testimonials: [
+                    {
+                            name: "Matt S.",
+                            content: "His exceptional effort and dedication to the team directly contributed to making our last project successful.",
+                        },
+                        {
+                            name: "George P.",
+                            content: "Chris is quick learner, very resourceful, enthusiastic and self motivated.",
+                        },
+                        {
+                            name: "Larry D.",
+                            content: "Chris has a wide range of skills and knowledge and he is very proactive in using newer, more efficient techniques and methods.",
+                        },
+                        {
+                            name: "Wennie A.",
+                            content: "Chris is a person whom you can count on to deliver when promised.",
+                        },
+                        {
+                            name: "Mark F.",
+                            content: "The highest compliment I can give anyone is that I would enjoy working with them again and Chris is definitely in that category."
+                        }
+                    ],
+                    sliderBreakpoints: {
+                        1024: {
+                            slideRatio: 0.3
+                        },
+                        600: {
+                            slideRatio: 0.5
+                        },
+                    },                
+                },
+                methods: {
+                    showDetails: function (site) {
+                        this.$vuedals.open({
+                            title: site.title,
+                            component: PortfolioModal,
+                            props: {
+                                headline: site.title,
+                                screenshotJpg: this.getJpg(site.screenshot),
+                                screenshotWebp: this.getWebp(site.screenshot),
+                                link: site.address,
+                                description: site.description,
+                                link_text: site.link_text,
+                                repo: site.repo,
+                            }
+                        });
+                    },
+                    getWebp: function(imgUrl) {
+                        return imgUrl + '.webp';
+                    },
+                    getJpg: function(imgUrl) {
+                        return imgUrl + '.jpg';
+                    },
+                    getLqip: function(imgUrl) {
+                        return imgUrl + '-lqip.jpg';
+                    },
+                    getPerson: function(name) {
+                        return "&mdash; " + name;
+                    },
+                }
+            });
+
+            particlesJS.load('particles-js', 'particles.json');
 
             var fadeupCards = [].slice.call(document.querySelectorAll("article.service-card, article.grid-item"));
 
