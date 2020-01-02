@@ -16,7 +16,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.min.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 46.25em)" href="style-tablet.min.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 61.25em)" href="style-desktop.min.css">
-    <link rel="stylesheet" type="text/css" media="screen and (min-width: 81.25em)" href="style-wide.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700">
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -166,6 +165,7 @@
                     </header>
                     <div class="headline">
                         <h3>{{job.name}}</h3>
+                        <h4>{{job.date}}</h4>
                     </div>
                     <div class="service-description" v-html="job.description">
                     </div>
@@ -376,6 +376,12 @@
                     ],
                     sites: [
                         {
+                            address: 'https://yourbestdigs.com',
+                            title: 'Your Best Digs',
+                            screenshot: 'images/ybd',
+                            description: 'Custom template development for listicle and stats type posts, Optimized image sizes for faster download - including retina and webp formats, Custom fields configuration for various uses, shortcode development for easy editing, plugin development for improving server response with Amazon products, desktop and mobile menu updates, updated Top Choices slider design and behavior, configured Google Optimize for A/B testing design changes, custom TablePress styling, and lots of style updates',
+                        },
+                        {
                             address: '//chris-smearing.github.io/landing--tyra',
                             title: 'Tyra Beauty',
                             screenshot: 'images/tyra_screenshot',
@@ -442,7 +448,7 @@
                             description: '<ul><li>Mobile-first responsive template development in WordPress and Shopify</li>\
                             <li>Create custom templates, landing pages, and contact forms; able to create templates by hand or with page builders, such as Divi, Elementor, WP Bakery, Fusion Builder, or Pro theme</li>\
                             <li>Conversion of graphic designs to templates for desktop and mobile</li>\
-                            <li>Cross-platform and device testing in BrowserStack to debug</li></ul>',
+                            <li>Cross-platform and device testing in BrowserStack and LambdaTest to debug</li></ul>',
                             skills: [
                                 'HTML5',
                                 'CSS3 / SCSS',
