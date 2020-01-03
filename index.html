@@ -100,14 +100,16 @@
 <body>
     <div id="particles-js"></div>
 
-    <header class="about-me">
+    <header class="about-me" role="banner">
         <h1 class="full-name">Chris Smearing</h1>
         <h2>Resume and Portfolio</h2>
-        <picture class="gravatar">
-            <source  type="image/webp" data-srcset="images/gravatar.webp">
-            <source type="image/jpeg" data-srcset="images/gravatar.jpg">
-            <img class="lazyload" data-src="images/gravatar.jpg" alt="Photo of me in the wild">
-        </picture>
+        <figure>
+            <picture class="gravatar">
+                <source  type="image/webp" data-srcset="images/gravatar.webp">
+                <source type="image/jpeg" data-srcset="images/gravatar.jpg">
+                <img class="lazyload" data-src="images/gravatar.jpg" alt="Photo of me in the wild">
+            </picture>
+        </figure>
 
     </header>
 
@@ -139,10 +141,10 @@
 
         <section class="work">
             <h2><span>Portfolio</span></h2>
-
+            <p class="portfolio-hint">Tap the image for description of work performed.</p>
             <section class="grid">
                 <article v-for="(site, index) in sites" class="grid-item" v-bind:class="{'left':(index % 3 === 0), 'right': (index % 3 === 2), 'center': (index % 3 === 1)}" @click="showDetails(site)">
-                    <figure>
+                    <figure title="Click for larger image and job description">
                         <picture>
                             <source type="image/webp" :data-srcset="getWebp(site.screenshot)">
                             <source type="image/jpeg" :data-srcset="getJpg(site.screenshot)">
@@ -161,7 +163,11 @@
             <div class="service">
                 <article v-for="job in experience" class="service-card center">
                     <header class="service-header">
-                        <img class="logo lazyload" :data-src="job.logo" :data-srcset="job.logo" :alt="job.name" loading="lazy">
+                        <figure>
+                            <picture>
+                                <img class="logo lazyload" :data-src="job.logo" :data-srcset="job.logo" :alt="job.name" loading="lazy">
+                            </picture>
+                        </figure>
                     </header>
                     <div class="headline">
                         <h3>{{job.name}}</h3>
@@ -204,17 +210,17 @@
             <form action="https://formcarry.com/s/WLkWE7rrM3l" method="POST">
                 <div class="row">
                     <div class="floating-label-wrap">
-                        <input class="floating-label-field" type="text" name="yourName" placeholder="Your name">
+                        <input class="floating-label-field" type="text" name="yourName" placeholder="Your name" aria-required="true">
                         <label class="floating-label" for="yourName">Your name</label>
                     </div>
                     <div class="floating-label-wrap">
-                        <input class="floating-label-field" type="email" name="yourEmail" placeholder="Your email" /></label>
-                        <label class="floating-label" for="yourEmail">Your email
+                        <input class="floating-label-field" type="email" name="yourEmail" placeholder="Your email" aria-required="true">
+                        <label class="floating-label" for="yourEmail">Your email</label>
                     </div>
                 </div>
 
                 <div class="floating-label-wrap">
-                    <textarea class="floating-label-field" rows=3 wrap=soft name="yourMessage" placeholder="Your message"></textarea>
+                    <textarea class="floating-label-field" rows=3 wrap=soft name="yourMessage" placeholder="Your message" aria-required="true"></textarea>
                     <label class="floating-label" for="yourMessage">Your Message</label>
                 </div>
 
@@ -311,12 +317,14 @@
 
                 template: `
                     <div class="modal-bg">
-                        <picture>
-                            <source type="image/webp" :srcset="screenshotWebp">
-                            <source type="image/jpeg" :srcset="screenshotJpg">
-                            <img :src="screenshotJpg" :srcset="screenshotJpg" :alt="headline" loading="lazy">
-                        </picture>
-                            
+                        <figure>
+                            <picture>
+                                <source type="image/webp" :srcset="screenshotWebp">
+                                <source type="image/jpeg" :srcset="screenshotJpg">
+                                <img :src="screenshotJpg" :srcset="screenshotJpg" :alt="headline" loading="lazy">
+                            </picture>
+                        </figure>
+
                         <h3>What I did:</h3>
                         <p><span v-html="description"></span></p>
                         <div class="links">
@@ -335,12 +343,12 @@
                     services: [
                         {
                             name: 'WordPress',
-                            icon: '<i class="fab fa-wordpress fa-3x"></i>',
+                            icon: '<i class="fab fa-wordpress fa-3x" aria-hidden="true"></i>',
                             description: '<p>Theme configuration, responsive template development with HTML5 and CSS3, shortcodes, plugins</p>',
                         },
                         {
                             name: 'Shopify',
-                            icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 173.7">\
+                            icon: '<span role="presentation" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 173.7">\
                                 <path class="lighter"\
                                     d="M130.7 32.9c-.1-.9-.9-1.3-1.5-1.4-.6-.1-12.6-.2-12.6-.2s-10.1-9.8-11.1-10.8-2.9-.7-3.7-.5c0 0-1.9.6-5.1 1.6-.5-1.7-1.3-3.8-2.4-5.9-3.6-6.9-8.8-10.5-15.2-10.5-.4 0-.9 0-1.3.1-.2-.2-.4-.4-.6-.7-2.8-3-6.3-4.4-10.5-4.3-8.2.2-16.3 6.1-23 16.7-4.7 7.4-8.2 16.7-9.2 23.9-9.4 2.9-16 4.9-16.1 5-4.7 1.5-4.9 1.6-5.5 6.1C12.4 55.3 0 151.4 0 151.4l104.1 18 45.1-11.2S130.8 33.7 130.7 32.9zm-39.2-9.7c-2.4.7-5.1 1.6-8.1 2.5-.1-4.1-.6-9.9-2.5-14.9 6.3 1.2 9.3 8.2 10.6 12.4zM78 27.4c-5.5 1.7-11.4 3.5-17.4 5.4 1.7-6.4 4.9-12.8 8.8-17 1.5-1.6 3.5-3.3 5.9-4.3 2.3 4.7 2.7 11.4 2.7 15.9zM66.8 5.8c1.9 0 3.5.4 4.9 1.3-2.2 1.1-4.4 2.8-6.4 5-5.2 5.6-9.2 14.2-10.8 22.6-5 1.5-9.8 3-14.3 4.4 3-13.2 14-32.9 26.6-33.3z">\
                                 </path>\
@@ -350,27 +358,27 @@
                                 <path fill="#FFF"\
                                     d="M79.1 54.7l-5.2 19.6s-5.8-2.7-12.8-2.2c-10.2.6-10.3 7-10.2 8.7.6 8.8 23.6 10.7 24.9 31.2 1 16.2-8.6 27.2-22.4 28.1-16.6 1-25.7-8.7-25.7-8.7l3.5-14.9s9.2 6.9 16.5 6.5c4.8-.3 6.5-4.2 6.3-7-.7-11.4-19.5-10.8-20.7-29.5-1-15.8 9.4-31.8 32.3-33.3 9-.8 13.5 1.5 13.5 1.5z">\
                                 </path>\
-                            </svg>',
+                            </svg></span>',
                             description: '<p>Theme configuration, responsive template development with HTML5, CSS3, and Liquid templating</p>',
                         },
                         {
                             name: 'Mailchimp',
-                            icon: '<i class="fab fa-mailchimp fa-3x"></i>',
+                            icon: '<i class="fab fa-mailchimp fa-3x" aria-hidden="true"></i>',
                             description: '<p>One-time and automated campaign setup; Creation of email compatible with majority of email clients</p>',
                         },
                         {
                             name: 'HTML5 + CSS3',
-                            icon: '<i class="fas fa-code fa-3x"></i>',
+                            icon: '<i class="fas fa-code fa-3x" aria-hidden="true"></i>',
                             description: '<p>Semantic markup with responsive styling</p>',
                         },
                         {
                             name: 'Hosting Setup',
-                            icon: '<i class="fas fa-desktop fa-3x"></i>',
+                            icon: '<i class="fas fa-desktop fa-3x" aria-hidden="true"></i>',
                             description: '<p>Complete site setup and configuration</p>',
                         },
                         {
                             name: 'Maintenance and Updates',
-                            icon: '<i class="fas fa-shield-alt fa-3x"></i>',
+                            icon: '<i class="fas fa-shield-alt fa-3x" aria-hidden="true"></i>',
                             description: '<p>Install and test updates, ensuring site security and stability</p>',
                         },
                     ],

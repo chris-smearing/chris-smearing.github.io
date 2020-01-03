@@ -300,6 +300,15 @@ $mq-breakpoints: (
 .work {
     display: block;
     
+    .portfolio-hint {
+        max-width: 90%;
+        margin: 0 auto 3rem;
+        text-align: center;
+
+        @include mq($from: desktop) {
+            display: none;
+        }
+    }
     .grid {
         display: flex;
         flex-direction: row;
@@ -616,12 +625,33 @@ footer {
 
 .vuedal {
     header {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin: 1rem auto 2rem;
+
         .title, h3 {
+            font-size: 1.1em;
             font-weight: normal;
         }
+        .title {
+            text-align: center;
+        }
         .close {
-            font-weight: 900;
-            font-size: 38px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 28px;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            height: 1px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: $highlightColor;
         }
     }
 
