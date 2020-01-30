@@ -265,7 +265,7 @@ $mq-breakpoints: (
         }
     }
     .vueperslides {
-        background-color: #8AACAF;
+        background-color: $cs-green;
         color: white;
 
         .vueperslide__content-wrapper {
@@ -321,6 +321,7 @@ $mq-breakpoints: (
             margin: 1rem;
             background-color: white;
             flex: 1 1 100%;
+            padding: 1rem 2.5rem;
             
             @include shadow();
 
@@ -344,6 +345,7 @@ $mq-breakpoints: (
             figure {
                 position: relative;
                 transition: all 0.3s ease-in-out;
+                margin: 0;
 
                 &:after {
                     opacity: 0;
@@ -669,10 +671,16 @@ footer {
             padding-top: 1rem;
 
             .site-link {
-                background-color: grey;
+                background-color: $cs-green;
+                border: none;
                 color: white;
+                transition: all 0.3s ease-in-out;
                 padding: 0.5rem 2rem;
-
+        
+                &:hover {
+                    background-color: $cs-maroon;
+                    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+                }
                 &:nth-child(2) {
                     margin-left: 1rem;
                 }
@@ -681,3 +689,44 @@ footer {
     }
 }
 
+.close {
+    button {
+        background-color: $cs-green;
+        border: none;
+        color: white;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: $cs-maroon;
+            box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+        }
+    }
+}
+
+.caption-platform {
+    padding-top: 2rem;
+    color: $cs-maroon;
+}
+
+.site-features {
+    margin: 0;
+    padding: 0;
+
+}
+.tags {
+    list-style-type: none;
+    padding: 0 0 0 1rem;
+    margin: 0;
+    
+    li {
+        display: inline;
+        
+        &:after {
+            content: ', '
+        }
+
+        &:last-child:after {
+            content: ''
+        }
+    }
+}

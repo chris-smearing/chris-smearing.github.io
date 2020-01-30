@@ -151,6 +151,10 @@
                             <img class="lazyload" :data-src="getJpg(site.screenshot)" :alt="site.title">
                         </picture>
                     </figure>
+ 
+                    <p class="caption-platform">Platform: {{ site.platform }}</p>
+                    <p v-if="site.tags" class="site-features">Features: <ul class="tags"><li v-for="(tag, index) in site.tags">{{ tag }}</li></ul></p>
+
                 </article>
             </section>
         </section>
@@ -369,7 +373,7 @@
                         {
                             name: 'HTML5 + CSS3',
                             icon: '<i class="fas fa-code fa-3x" aria-hidden="true"></i>',
-                            description: '<p>Semantic markup with responsive styling</p>',
+                            description: '<p>Semantic markup with responsive styling; image optimization</p>',
                         },
                         {
                             name: 'Hosting Setup',
@@ -384,10 +388,20 @@
                     ],
                     sites: [
                         {
+                            address: 'https://pbttcorp.com',
+                            title: 'PBTT Corp',
+                            screenshot: 'images/pbttcorp-home',
+                            description: 'Designed by <a target="_blank" href="https://www.turningheadsdesigns.com/">Heather at Turning Heads Design</a> this was a full site build using <a target="_blank" href="https://theme.co/pro">Pro theme from Theme.Co</a>. I added animations from the easy to use <a target="_blank" href="https://greensock.com">GreenSock Animation Platform</a>, which was new to me, but I found wonderfully easy to use. I also worked with WPMU DEV\'s Forminator to create an advanced form for customer quote request.',
+                            platform: 'WordPress',
+                            tags: ['animation', 'form'],
+                        },
+                        {
                             address: 'https://yourbestdigs.com',
                             title: 'Your Best Digs',
                             screenshot: 'images/ybd',
                             description: 'Custom template development for listicle and stats type posts, Optimized image sizes for faster download - including retina and webp formats, Custom fields configuration for various uses, shortcode development for easy editing, plugin development for improving server response with Amazon products, desktop and mobile menu updates, updated Top Choices slider design and behavior, configured Google Optimize for A/B testing design changes, custom TablePress styling, and lots of style updates',
+                            platform: 'WordPress',
+                            tags: ['ACF', 'templates', 'shortcodes'],
                         },
                         {
                             address: '//chris-smearing.github.io/landing--tyra',
@@ -396,6 +410,7 @@
                             description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank" rel="noopener">MJML language framework</a>',
                             link_text: 'See demo',
                             repo: 'https://github.com/chris-smearing/landing--tyra',
+                            platform: 'Shopify',
                         },
                         {
                             address: '//chris-smearing.github.io/landing--westmore',
@@ -404,48 +419,57 @@
                             description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank" rel="noopener">MJML language framework</a>',
                             link_text: 'See demo',
                             repo: 'https://github.com/chris-smearing/landing--westmore',
+                            platform: 'Shopify',
                         },
                         {
                             address: 'http://cidregistry.com',
                             title: 'CID Registry',
                             screenshot: 'images/cidregistry_screenshot',
-                            description: 'Hosting configuration, WordPress full site build and deployment, responsive template development, custom form development',
+                            description: 'Designed by <a target="_blank" href="https://www.turningheadsdesigns.com/">Heather at Turning Heads Design</a>. Hosting configuration, WordPress full site build and deployment, responsive template development, custom form development',
+                            platform: 'WordPress',
                         },
                         {
                             address: 'https://bravewomentravel.com',
                             title: 'Brave Women Travel',
                             screenshot: 'images/brave_women_travel_screenshot',
                             description: 'WordPress site development, responsive template development, <a href="https://www.advancedcustomfields.com/" target="_blank" rel="noopener">Advanced Custom Fields</a> integration',
+                            platform: 'WordPress',
                         },
                         {
                             address: 'http://servicecityenergy.com',
                             title: 'Service City Energy',
                             screenshot: 'images/service_city_screenshot',
-                            description: 'Hosting setup, Landing page development with <a href="https://theme.co/pro" target="_blank" rel="noopener">Pro theme</a>, Slider Revolution customization',
+                            description: 'Designed by <a target="_blank" href="https://www.turningheadsdesigns.com/">Heather at Turning Heads Design</a>. Hosting setup, Landing page development with <a href="https://theme.co/pro" target="_blank" rel="noopener">Pro theme</a>, Slider Revolution customization',
+                            platform: 'WordPress',
                         },
                         {
                             address: 'https://drvims.com',
                             title: "Dr. Vim's",
                             screenshot: 'images/drvims_screenshot',
                             description: 'Shopify theme development, plugin configuration',
+                            platform: 'Shopify',
                         },
                         {
                             address: 'https://pzre.com',
                             title: "Penzance",
                             screenshot: 'images/penzance_map',
                             description: 'Complete site development in WordPress with Avada theme, custom Google map with filterable markers, Custom post types for team members and project locations',
+                            platform: 'WordPress',
+                            tags: ['Google Map', 'CPT'],
                         },
                         {
                             address: 'https://hungryhuy.com',
                             title: "Hungry Huy",
                             screenshot: 'images/hungry-huy',
                             description: 'Header redevelopment, added subscribe form, Cloudflare setup, Retina images setup',
+                            platform: 'WordPress',
                         },
                         {
                             address: 'https://chaos.club',
                             title: "Chaos Club",
                             screenshot: 'images/chaos-club',
-                            description: 'Footer redevelopment, Personalizer style updates, product categorization improvements',
+                            description: 'Shopify theme development. Footer redevelopment, Personalizer style updates, product categorization improvements',
+                            platform: 'Shopify',
                         },
                     ],
                     experience: [

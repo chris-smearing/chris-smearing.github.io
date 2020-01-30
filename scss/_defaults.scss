@@ -1,6 +1,9 @@
 @import 'mixins';
 @import 'mq';
 
+$cs-green: #8AACAF;
+$cs-maroon: #AF566F;
+
 html {
 	box-sizing: border-box;
 }
@@ -26,10 +29,10 @@ img {
 a {
     text-decoration: none;
     text-transform: none;
-    color: #555;
+    color: $cs-maroon;
 
     &:visited {
-        color: #444;
+        color: $cs-maroon;
     }
 }
 h1, h2 {
@@ -74,6 +77,9 @@ footer {
     }
 }
 
+p:empty {
+    display: none;
+}
 .hidden {
     display: none;
 }
