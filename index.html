@@ -145,16 +145,13 @@
             <section class="grid">
                 <article v-for="(site, index) in sites" class="grid-item" v-bind:class="{'left':(index % 3 === 0), 'right': (index % 3 === 2), 'center': (index % 3 === 1)}" @click="showDetails(site)">
                     <figure title="Click for larger image and job description">
+                        <figcaption class="site-caption">{{ site.title }}</figcaption>
                         <picture>
                             <source type="image/webp" :data-srcset="getWebp(site.screenshot)">
                             <source type="image/jpeg" :data-srcset="getJpg(site.screenshot)">
                             <img class="lazyload" :data-src="getJpg(site.screenshot)" :alt="site.title">
                         </picture>
-                    </figure>
- 
-                    <p class="caption-platform">Platform: {{ site.platform }}</p>
-                    <p v-if="site.tags" class="site-features">Features: <ul class="tags"><li v-for="(tag, index) in site.tags">{{ tag }}</li></ul></p>
-
+                    </figure> 
                 </article>
             </section>
         </section>
@@ -290,6 +287,22 @@
             const Plugin = Vuedals.default;
             Vue.use(Plugin);
             
+            function resizeBackdrop() {
+                var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                let backdrop = document.querySelector('.vuedals');
+
+                backdrop.style.width = w + 'px';
+            };
+
+            // for whatever reason, the backdrop is wider than the viewport, despite it being
+            // set to 100%. Run this function to make it only as wide as the viewport.
+            Bus.$on('opened', data => {
+                resizeBackdrop();
+            });
+
+            // just in case the window gets resized while the modal is open
+            window.addEventListener( 'resize', resizeBackdrop);
+
             const PortfolioModal = {
 
                 name: 'portfolio-modal',
@@ -317,6 +330,10 @@
                         type: String,
                         default: '',
                     },
+                    platform: {
+                        type: String,
+                    },
+                    tags: [],
                 },
 
                 template: `
@@ -331,6 +348,9 @@
 
                         <h3>What I did:</h3>
                         <p><span v-html="description"></span></p>
+                        <p v-if="platform" class="platform">Platform: {{ platform }}</p>
+                        <p v-if="tags" class="site-features">Features:</p>
+                        <ul v-if="tags" class="tags"><li v-for="(tag, index) in tags">{{ tag }}</li></ul>
                         <div class="links">
                             <a class="site-link" :href="link" target="_blank" rel="noopener">{{ link_text }}</a>
                             <a v-if="repo" class="site-link" :href="repo" target="_blank" rel="noopener">View repo</a>
@@ -562,8 +582,12 @@
                                 description: site.description,
                                 link_text: site.link_text,
                                 repo: site.repo,
+                                platform: site.platform,
+                                tags: site.tags,
                             }
                         });
+
+                        
                     },
                     getWebp: function(imgUrl) {
                         return imgUrl + '.webp';

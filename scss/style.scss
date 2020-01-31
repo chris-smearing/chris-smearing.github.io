@@ -97,19 +97,20 @@ $mq-breakpoints: (
     }
 }
 
+section {
+    margin: 0 1rem;
+}
 .services, .experience {
-    margin-top: 1rem;
+    // margin: 0 1rem;
+
     .service {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+        grid-auto-rows: 1fr;
 
         &-card {
             background-color: white;
-            flex: 0 1 100%;
-            margin: 1rem;
-
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
@@ -193,8 +194,6 @@ $mq-breakpoints: (
             }
 
             @include mq($from: tablet) {
-                flex: 1 1 45%;
-
                 &.right {
                     transform: translateX(200px);
                 }
@@ -202,9 +201,6 @@ $mq-breakpoints: (
                     opacity: 1;
                     transform: translate(0, 0);
                 }
-            }
-            @include mq($from: desktop) {
-                flex: 1 1 25%;
             }
         }
         .headline {
@@ -230,22 +226,38 @@ $mq-breakpoints: (
                 transform: translateX(-50%);
             }
         }
+        // grid goes to 2 columns
+        @include mq($from: tablet) {
+            grid-template-columns: 1fr 1fr;
+        }
+        // grid goes to 3 columns
+        @include mq($from: desktop) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
     }
 
+}
+
+.services {
     @include mq($from: desktop) {
         max-width: 54rem;
         margin: 0 auto;
     }
 }
-
 .experience {
-    .service-card {
-        @include mq($from: tablet) {
+    .service {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        .service-card {
             flex: 1 1 100%;
+
+            @include mq($from: tablet) {
+                flex-basis: 45%;
+            }
         }
-        @include mq($from: desktop) {
-            flex: 1 1 45%;
-        }
+
     }
     .service-description {
         text-align: left;
@@ -253,6 +265,7 @@ $mq-breakpoints: (
     }
     @include mq($from: desktop) {
         max-width: 72rem;
+        // margin: 0 1rem;
     }
 }
 
@@ -310,17 +323,15 @@ $mq-breakpoints: (
         }
     }
     .grid {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        display: grid;
+        // margin: 0 1rem;
+        margin: 0;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr;
     
         &-item {
-            width: 100%;
             cursor: pointer;
-            margin: 1rem;
             background-color: white;
-            flex: 1 1 100%;
             padding: 1rem 2.5rem;
             
             @include shadow();
@@ -357,7 +368,7 @@ $mq-breakpoints: (
                     top: 50%;
                     left: 50%;
                     height: auto;
-                    color: black;
+                    color: $cs-maroon;
                     z-index: 999;
                     transform: translate(-50%, -50%);
                     transition: all 0.3s ease-in-out;
@@ -371,8 +382,6 @@ $mq-breakpoints: (
                 }
             }
             @include mq($from: tablet) {
-                flex: 0 1 45%;
-
                 &.right {
                     transform: translateX(200px);
                 }
@@ -381,9 +390,15 @@ $mq-breakpoints: (
                     transform: translate(0, 0);
                 }
             }
-            @include mq($from: desktop) {
-                flex: 0 1 30%;
-            }
+        }
+        // grid goes to 2 columns
+        @include mq($from: tablet) {
+            grid-template-columns: 1fr 1fr;
+            margin: 0;
+        }
+        // grid goes to 3 columns
+        @include mq($from: desktop) {
+            grid-template-columns: 1fr 1fr 1fr;
         }
     }
 }
@@ -701,8 +716,14 @@ button.close {
     }
 }
 
-.caption-platform {
-    padding-top: 2rem;
+.platform, .site-features, .tags {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+.site-caption {
+    padding-bottom: 1rem;
+    text-align: center;
     color: $cs-maroon;
 }
 
