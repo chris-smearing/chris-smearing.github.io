@@ -77,21 +77,17 @@ $mq-breakpoints: (
         font-size: 1.25rem;
     }
 
-    .gravatar {
-        display: block;
-        margin: 2rem auto 0;
-        text-align: center;
-        height: auto;
-        border-radius: 50%;
-        overflow: hidden;
-        width: 25vw;
-        position: relative;
-    
+    .logo {
+        width: 40vw;
+
         @include mq($from: tablet) {
+            width: 30vw;
+        }
+        @include mq($from: desktop) {
             position: absolute;
-            width: 15vw;
+            width: 18vw;
             top: 2rem;
-            right: 2.75rem;
+            left: 2.75rem;
             margin-top: 0;
         }
     }
@@ -180,15 +176,15 @@ section {
 
             &:hover {
                 i, img, svg {
-                    color: #AF566F;
+                    color: $cs-maroon;
                     transform: scale(1.2);
                 }
                 svg {
                     .lighter {
-                        fill: lighten(#AF566F, 10%);
+                        fill: lighten($cs-maroon, 10%);
                     }
                     .darker {
-                        fill: #AF566F;
+                        fill: $cs-maroon;
                     }
                 }
             }
@@ -217,7 +213,7 @@ section {
             }
             &:after {
                 content: '';
-                background-color: lighten(#AF566F, 30%);
+                background-color: lighten($cs-maroon, 60%);
                 height: 3px;
                 width: 70px;
                 position: absolute;
@@ -586,7 +582,7 @@ footer {
             display: flex;
             justify-content: space-between;
             a {
-                color: #AF566F;
+                color: $cs-maroon;
             }
             @include mq($from: tablet) {
                 width: 10%;
@@ -609,13 +605,13 @@ footer {
             flex-direction: column;
             svg {
                 max-width: 32px;
+                path {
+                    fill: $cs-maroon;
+                }
             }
         }
         .namecheap {
             margin-top: 1rem;
-            svg {
-                max-width: 128px;
-            }
         }
 
         @include mq($from: tablet) {
@@ -633,7 +629,7 @@ footer {
     }
     .fa-vuejs {
         vertical-align: bottom;
-        color: #AF566F;
+        color: $cs-maroon;
         @include mq($from: tablet) {
             margin-top: 1rem;
         }

@@ -23,17 +23,6 @@ function scssBuildTask(){
     return src('scss/style.scss')
         .pipe(sourcemaps.init()) // initialize sourcemaps first
         .pipe(sass({ outputStyle: 'compressed' })) // compile SCSS to CSS
-        .pipe(postcss([ extractMediaQuery({
-            queries: {
-                '(min-width: 46.25em)': 'tablet',
-                '(min-width: 61.25em)': 'desktop',
-                '(min-width: 81.25em)': 'wide'
-            },
-            output: {
-                name: '[name]-[query].min.[ext]',
-                path: '.'
-            },
-        }) ])) // PostCSS plugins
         .pipe(rename('style.min.css'))
         .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
         .pipe(dest('.'));

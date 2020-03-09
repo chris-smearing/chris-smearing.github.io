@@ -1,11 +1,12 @@
 @import 'mixins';
 @import 'mq';
 
-$cs-green: #8AACAF;
-$cs-maroon: #AF566F;
+$cs-green:#037394;
+$cs-maroon: #0489b0;
 
 html {
-	box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 18px;
 }
 
 *,
@@ -16,7 +17,8 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #333;
     max-width: 1170px;
     margin: 0 auto;
 }
@@ -41,7 +43,7 @@ h1, h2 {
     color: #444;
 }
 
-$strikeColor: lighten(#AF566F, 30%);
+$strikeColor: lighten($cs-maroon, 10%);
 
 h2 {
     margin: 0;
