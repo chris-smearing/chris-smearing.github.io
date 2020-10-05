@@ -98,18 +98,16 @@
 </head>
 
 <body>
+    <div id="particles-js"></div>
+
     <header class="about-me" role="banner">
-        <div class="logo-column">
-            <figure class="logo">
-                <picture>
-                    <img src="img/chris-codes-logo.svg" alt="my cool new logo">
-                </picture>
-            </figure>
-        </div>
-        <div class="name-wrapper">
-            <h1 class="full-name">Chris Smearing</h1>
-            <h2>Resume and Portfolio</h2>
-        </div>
+        <figure class="logo">
+            <picture>
+                <img src="img/chris-codes-logo.svg" alt="my cool new logo">
+            </picture>
+        </figure>
+        <h1 class="full-name">Chris Smearing</h1>
+        <h2>Resume and Portfolio</h2>
     </header>
 
     <main id="app">
@@ -602,6 +600,8 @@
                     },
                 }
             });
+
+            particlesJS.load('particles-js', 'particles.json');
 
             var fadeupCards = [].slice.call(document.querySelectorAll("article.service-card, article.grid-item"));
 
