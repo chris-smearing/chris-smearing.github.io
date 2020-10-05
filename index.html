@@ -31,6 +31,9 @@
         gtag('config', 'UA-141872549-1');
     </script>
 
+    <!-- open source analytics -->
+    <script async defer data-website-id="e0ebb40c-9920-4a69-a79b-592468d3b6a4" src="https://csmearing-umami.herokuapp.com/umami.js"></script>
+
     <script type="application/ld+json">
         {
             "@context": "http://schema.org/",
@@ -95,16 +98,18 @@
 </head>
 
 <body>
-    <div id="particles-js"></div>
-
     <header class="about-me" role="banner">
-        <figure class="logo">
-            <picture>
-                <img src="img/chris-codes-logo.svg" alt="my cool new logo">
-            </picture>
-        </figure>
-        <h1 class="full-name">Chris Smearing</h1>
-        <h2>Resume and Portfolio</h2>
+        <div class="logo-column">
+            <figure class="logo">
+                <picture>
+                    <img src="img/chris-codes-logo.svg" alt="my cool new logo">
+                </picture>
+            </figure>
+        </div>
+        <div class="name-wrapper">
+            <h1 class="full-name">Chris Smearing</h1>
+            <h2>Resume and Portfolio</h2>
+        </div>
     </header>
 
     <main id="app">
@@ -597,8 +602,6 @@
                     },
                 }
             });
-
-            particlesJS.load('particles-js', 'particles.json');
 
             var fadeupCards = [].slice.call(document.querySelectorAll("article.service-card, article.grid-item"));
 
