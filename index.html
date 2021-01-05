@@ -101,11 +101,6 @@
     <div id="particles-js"></div>
 
     <header class="about-me" role="banner">
-        <figure class="logo">
-            <picture>
-                <img src="img/chris-codes-logo.svg" alt="my cool new logo">
-            </picture>
-        </figure>
         <h1 class="full-name">Chris Smearing</h1>
         <h2>Resume and Portfolio</h2>
     </header>
@@ -193,7 +188,7 @@
         <section class="education">
             <h2><span>Education</span></h2>
             <a href="https://utk.edu" target="_blank" class="ut-logo" rel="noopener">The University of Tennessee, Knoxville</a>
-            <h3>B.S. Electrical Engineering, 1997</h3>
+            <h3>B.S. Electrical Engineering</h3>
         </section>
     </main>
 
@@ -344,7 +339,7 @@
                         </figure>
 
                         <h3>What I did:</h3>
-                        <p><span v-html="description"></span></p>
+                        <p v-html="description"></p>
                         <p v-if="platform" class="platform">Platform: {{ platform }}</p>
                         <p v-if="tags" class="site-features">Features:</p>
                         <ul v-if="tags" class="tags"><li v-for="(tag, index) in tags">{{ tag }}</li></ul>
@@ -404,6 +399,90 @@
                         },
                     ],
                     sites: [
+                        {
+                            address: 'https://forgept.com',
+                            title: "Forge Fitness & Nutrition Coaching",
+                            screenshot: 'images/forgept',
+                            description: 'This site uses the Pro theme, which was in place when I took over maintenance. I developed several page layouts with the Pro builder, and added Tawk.to plugin for real-time chat.',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://learn.realscout.com/customers',
+                            title: "RealScout Landing Pages",
+                            screenshot: 'images/realscout',
+                            description: 'Template development, Enfold theme, Avia builder',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://blog.realscout.com',
+                            title: "RealScout Blog",
+                            screenshot: 'images/realscout-blog',
+                            description: 'Full-site development, Jupiter X theme, Elementor builder',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://www.johnelliott.com/pages/media',
+                            title: "John Elliott",
+                            screenshot: 'images/johnelliott',
+                            description: 'Landing page development, template coding for use with the Customizer',
+                            platform: 'Shopify',
+                        },
+                        {
+                            address: 'https://remoraapp.com',
+                            title: "Remora App",
+                            screenshot: 'images/remoraapp',
+                            description: 'Designed by <a target="_blank" href="https://www.turningheadsdesigns.com/">Heather at Turning Heads Design</a> this was a full site build using <a target="_blank" href="https://elementor.com">Elementor theme and builder</a>. This is the landing page for the soon to be released app for cargo shipments in Alaska. ',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://bbrcte.org',
+                            title: "BBRCTE",
+                            screenshot: 'images/bbrcte',
+                            description: 'Designed by <a target="_blank" href="https://www.turningheadsdesigns.com/">Heather at Turning Heads Design</a> this was a full site build using <a target="_blank" href="https://elementor.com">Elementor theme and builder</a>. I added a custom post type for courses and used that as the data source in the filterable grid. Course applications are in Gravity Forms with workflow features provided by Gravity Flow.',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://hungryhuy.com',
+                            title: "Hungry Huy",
+                            screenshot: 'images/hungryhuy',
+                            description: 'Header and footer development, added subscribe forms in Thrive Leads, Cloudflare setup, Retina images setup, category and sitemap template development, WP Recipe Maker template development',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://theravenouscouple.com',
+                            title: "The Ravenous Couple",
+                            screenshot: 'images/theravenouscouple',
+                            description: 'This site was not responsive when I started working on it; it displayed at desktop sizes only. I added CSS to make site the site responsive for mobile and tablet users. I also added and configured WP Recipe Maker plugin.',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://theharringtonagency.com',
+                            title: "The Harrington Agency",
+                            screenshot: 'images/theharringtonagency',
+                            description: 'I took over development for this site from the developer who abandonded the client. There is a Vue.js app that operates the menu system and that is unique for a WordPress site. This theme uses the WP Bakery page builder and I added the MailPoet plugin to capture subscribers.',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://placerlaw.net',
+                            title: "Placer Law Group, APC",
+                            screenshot: 'images/placerlaw',
+                            description: 'Designed by <a target="_blank" href="https://www.turningheadsdesigns.com/">Heather at Turning Heads Design</a> this was a full site build using <a target="_blank" href="https://theme.co/pro">Pro theme from Theme.Co</a>. I added and configured Easy Digital Downloads so potential clients can download free forms for use in California legal matters.',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://store.orawellness.com',
+                            title: "OraWellness",
+                            screenshot: 'images/orawellness',
+                            description: 'The theme in use on this site was quite old, so I upgraded to the latest version and migrated the theme customizations. This client also has a <a target="_blank" href="https://orawellness.com">WordPress site that I work on.</a>',
+                            platform: 'Shopify & WordPress',
+                        },
+                        {
+                            address: 'https://majohnsonshotel.com',
+                            title: "Ma Johnson's Historical Hotel",
+                            screenshot: 'images/majohnsons-hotel',
+                            description: 'Designed by <a target="_blank" href="https://www.turningheadsdesigns.com/">Heather at Turning Heads Design</a> this was a full site build using <a target="_blank" href="https://theme.co/pro">Pro theme from Theme.Co</a>. ',
+                            platform: 'WordPress',
+                        },
                         {
                             address: 'https://pbttcorp.com',
                             title: 'PBTT Corp',
@@ -475,13 +554,6 @@
                             tags: ['Google Map', 'CPT'],
                         },
                         {
-                            address: 'https://hungryhuy.com',
-                            title: "Hungry Huy",
-                            screenshot: 'images/hungry-huy',
-                            description: 'Header redevelopment, added subscribe form, Cloudflare setup, Retina images setup',
-                            platform: 'WordPress',
-                        },
-                        {
                             address: 'https://chaos.club',
                             title: "Chaos Club",
                             screenshot: 'images/chaos-club',
@@ -492,7 +564,7 @@
                     experience: [
                         {
                             name: 'Freelance on Upwork',
-                            date: '2017-present',
+                            date: '2016-present',
                             logo: 'img/upwork-logo.svg',
                             description: '<ul><li>Mobile-first responsive template development in WordPress and Shopify</li>\
                             <li>Create custom templates, landing pages, and contact forms; able to create templates by hand or with page builders, such as Divi, Elementor, WP Bakery, Fusion Builder, or Pro theme</li>\
