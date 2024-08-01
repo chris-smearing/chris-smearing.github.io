@@ -47,9 +47,9 @@ $strikeColor: lighten($cs-maroon, 10%);
 
 h2 {
     margin: 0;
-    @include bg-strike($strikeColor);
     font-weight: normal;
     letter-spacing: 0.1em;
+    @include bg-strike($strikeColor);
 }
 h3 {
     color: #333;

@@ -5,18 +5,12 @@ const { src, dest, watch, series, parallel } = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-dart-sass');
 const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const replace = require('gulp-replace');
 const browsersync = require('browser-sync').create();
 const rename = require('gulp-rename');
 
 const imagemin = require('gulp-imagemin');
 const imageminWebp = require('gulp-webp');
 const mozjpeg = require('imagemin-mozjpeg');
-const extractMediaQuery = require('postcss-extract-media-query');
 
 // Sass task: compiles the style.scss file into style.css
 function scssBuildTask(){    

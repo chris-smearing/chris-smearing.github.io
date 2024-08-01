@@ -167,10 +167,6 @@
             </div>
         </section>
 
-        <section class="download">
-            <a type="submit" href="chris_smearing_resume_web.pdf">Download My Full Resume</a>
-        </section>
-        
         <section class="education">
             <h2><span>Education</span></h2>
             <a href="https://utk.edu" target="_blank" class="ut-logo" rel="noopener">The University of Tennessee, Knoxville</a>
@@ -179,37 +175,6 @@
     </main>
 
     <footer>
-        <section class="hire-me">
-            <a href="https://www.upwork.com/o/profiles/users/_~01c5c99f7913666e34/" target="_blank" rel="noopener">Hire me on Upwork</a>
-        </section>
-
-        <section class="contact">
-            <h2><span>Contact Me</span></h2>
-
-            <form action="https://formcarry.com/s/WLkWE7rrM3l" method="POST">
-                <div class="row">
-                    <div class="floating-label-wrap">
-                        <input class="floating-label-field" type="text" name="yourName" placeholder="Your name" aria-required="true">
-                        <label class="floating-label" for="yourName">Your name</label>
-                    </div>
-                    <div class="floating-label-wrap">
-                        <input class="floating-label-field" type="email" name="yourEmail" placeholder="Your email" aria-required="true">
-                        <label class="floating-label" for="yourEmail">Your email</label>
-                    </div>
-                </div>
-
-                <div class="floating-label-wrap">
-                    <textarea class="floating-label-field" rows=3 wrap=soft name="yourMessage" placeholder="Your message" aria-required="true"></textarea>
-                    <label class="floating-label" for="yourMessage">Your Message</label>
-                </div>
-
-                <input type="hidden" name="_gotcha" />
-                <input type="hidden" name="subject" value="New contact from chris-smearing.github.io" />
-                <input type="hidden" id="captchaResponse" name="g-recaptcha-response" />
-
-                <input type="submit" value="Send">
-            </form>            
-        </section>
 
         <div class="imprint">
             <p>Copyright &copy; 2019 Chris Smearing</p>
@@ -218,21 +183,6 @@
                 <a href="https://www.linkedin.com/in/csmearing/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in fa-2x"></i><p class="hidden">My profile on LinkedIn.com</p></a>
             </div>
 
-            <div class="affiliates">
-                <div class="digital-ocean">
-                    <a href="https://m.do.co/c/fba3a9d78fff" target="_blank" rel="noopener">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1.4 1201.4 1201.4"><path fill="#AF566F" d="M600 1200V968c248 0 436-244 344-504-36-96-112-172-208-208-260-92-504 96-504 344H0C0 208 380-100 792 28c180 56 324 200 380 380 128 412-180 792-572 792z"/><path fill="#AF566F" d="M600 968H368V736h232zm-232 180H192V968h176zM192 968H40V820h152z"/></svg>
-                        <p>I use and recommend Digital Ocean.</p><p>Click here for a $50 credit!</p>
-                    </a>
-                </div>
-    
-                <div class="namecheap">
-                    <a href="http://www.dpbolvw.net/9b108gv30v2IRMKNSKSIKKNLPONO" target="_blank" rel="noopener">
-                        <img src="img/namecheap-blue.png" alt="Namecheap" width="32">
-                        <p>I use and recommend Namecheap.</p>
-                    </a>
-                </div>
-            </div>
 
             <p class="hidden"><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@clemhlrdt?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Clément H"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Clément H</span></a></p>
 
@@ -241,7 +191,6 @@
         </div>
     </footer>
 
-    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>    
     <script src="js/vue.min.js"></script>
     <script src="js/lazysizes.min.js" defer></script>
     <script src="js/particles.min.js" defer></script>
@@ -549,12 +498,31 @@
                     ],
                     experience: [
                         {
+                            name: 'Siege Media',
+                            date: '2021-present',
+                            logo: 'img/siege-media.svg',
+                            description: '<ul><li>Interactive calculators, maps, and quizzes</li>\
+                            <li>Create custom templates, landing pages, and contact forms; able to create templates in the client\'s required format.</li>\
+                            <li>Conversion of graphic designs to templates</li></ul>',
+                            skills: [
+                                'HTML5',
+                                'CSS3 / SCSS',
+                                'PHP / WordPress',
+                                'JavaScript',
+                                'Vue / React',
+                                'Shopify Liquid',
+                                'git',
+                                'npm / yarn',
+                                'LocalWP / DevKinsta',
+                            ],
+                        },
+                        {
                             name: 'Freelance on Upwork',
-                            date: '2016-present',
+                            date: '2016-2021',
                             logo: 'img/upwork-logo.svg',
                             description: '<ul><li>Mobile-first responsive template development in WordPress and Shopify</li>\
                             <li>Create custom templates, landing pages, and contact forms; able to create templates by hand or with page builders, such as Divi, Elementor, WP Bakery, Fusion Builder, or Pro theme</li>\
-                            <li>Conversion of graphic designs to templates for desktop and mobile</li>\
+                            <li>Conversion of graphic designs to templates</li>\
                             <li>Cross-platform and device testing in BrowserStack and LambdaTest to debug</li></ul>',
                             skills: [
                                 'HTML5',

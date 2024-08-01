@@ -113,9 +113,9 @@ section {
             justify-content: center;
             align-items: center;
             text-align: center;
-            @include shadow();
             opacity: 0;
             transition: all 0.75s;
+            @include shadow();
 
             &.center {
                 transform: translateY(100px);
@@ -329,11 +329,10 @@ section {
             cursor: pointer;
             background-color: white;
             padding: 1rem 2.5rem;
-            
-            @include shadow();
-
             opacity: 0;
             transition: all 0.3s ease-in-out;
+            
+            @include shadow();
 
             &.center {
                 transform: translateY(100px);
