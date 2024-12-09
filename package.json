@@ -2,7 +2,8 @@
     "name": "chris-portfolio",
     "scripts": {
         "dev": "gulp",
-        "build": "gulp build"
+        "build": "gulp build",
+        "images": "gulp images"
     },
     "devDependencies": {
         "browser-sync": "^2.26.7",

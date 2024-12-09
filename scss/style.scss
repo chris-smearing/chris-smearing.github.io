@@ -234,7 +234,7 @@ section {
 
 }
 
-.services {
+.services, .work, .apps {
     @include mq($from: desktop) {
         max-width: 54rem;
         margin: 0 auto;
@@ -306,7 +306,7 @@ section {
         }
     }
 }
-.work {
+.work, .apps {
     display: block;
     
     .portfolio-hint {
@@ -749,4 +749,13 @@ button.close {
             content: ''
         }
     }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-description {
+    margin-top: -2rem;
+    margin-bottom: 2rem;
 }

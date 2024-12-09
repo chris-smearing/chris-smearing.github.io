@@ -9,7 +9,7 @@ const browsersync = require('browser-sync').create();
 const rename = require('gulp-rename');
 
 const imagemin = require('gulp-imagemin');
-const imageminWebp = require('gulp-webp');
+const webp = require('gulp-webp');
 const mozjpeg = require('imagemin-mozjpeg');
 
 // Sass task: compiles the style.scss file into style.css
@@ -42,17 +42,10 @@ function pageTask(){
 }
 
 function imageTask() {
-    return src(['img/*.jpg', '!img/laptop-javascript.jpg'])
-        .pipe(
-            imagemin([
-                mozjpeg({
-                    quality: 85, 
-                    progressive: true
-                })
-            ])
-        )
+    return src(['img/*.+(jpg|png)', '!img/laptop-javascript.jpg'])
+        .pipe(imagemin())
         .pipe(dest('images'))
-        .pipe(imageminWebp({quality: 85}))
+        .pipe(webp())
         .pipe(dest('images'));
 }
 
@@ -70,18 +63,11 @@ function heroImageTask() {
 }
 
 function imageLqipTask() {
-    return src('img/*.jpg')
+    return src('img/*.+(jpg|png)')
         .pipe(rename(function (path) {
             path.basename += "-lqip";
         }))
-        .pipe(
-            imagemin([
-                mozjpeg({
-                    quality: 10, 
-                    progressive: true
-                })
-            ])
-        )
+        .pipe(imagemin())
         .pipe(dest('images'))
 }
 

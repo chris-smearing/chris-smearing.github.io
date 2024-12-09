@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="vueperslides.min.css" media="screen" title="vueperslides default styles">
     <link rel="stylesheet" type="text/css" media="screen" href="style.min.css">
 
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous">
 
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 
@@ -25,7 +25,7 @@
             "@context": "http://schema.org/",
             "@type": "Person",
             "jobTitle": "Web Developer",
-            "description": "Chris Smearing is a front-end web developer with experience in WordPress, Shopify, and Perl. Past experience includes programming embedded systems in DLP® projectors for Texas Instruments.",
+            "description": "Chris Smearing is a front-end web developer with experience in WordPress, Shopify, Webflow, Vue, and Perl. Past experience includes programming embedded systems in DLP® projectors for Texas Instruments.",
             "name": "Chris Smearing",
             "alumniOf": [
                 {
@@ -46,7 +46,14 @@
                         "postalCode": "75023",
                         "streetAddress": "6550 Chase Oaks Blvd"
                     }
-                }]
+                },
+                {
+                    "@type": "Organization",
+                    "name": "Siege Media",
+                    "url": "https://siegemedia.com/",
+                    "sameAs": "https://www.siegemedia.com/",
+                }
+            ]
         }
     </script>
 
@@ -77,7 +84,6 @@
         - https://technicalseo.com/tools/schema-markup-generator/
         - design inspiration from https://dribbble.com
         - Particles.js from https://github.com/VincentGarreau/particles.js
-        - lazysizes.js from https://github.com/aFarkas/lazysizes
         - Vueper Slides Vue slider from https://github.com/antoniandre/vueper-slides
         - icons and images from upwork.com, ti.com, shopify.com, namecheap.com
     ------------------------------------ -->
@@ -119,15 +125,33 @@
 
         <section class="work">
             <h2><span>Portfolio</span></h2>
+            <p class="text-center section-description">A selection of websites I created or updated.</p>
             <p class="portfolio-hint">Tap the image for description of work performed.</p>
+
             <section class="grid">
                 <article v-for="(site, index) in sites" class="grid-item" v-bind:class="{'left':(index % 3 === 0), 'right': (index % 3 === 2), 'center': (index % 3 === 1)}" @click="showDetails(site)">
                     <figure title="Click for larger image and job description">
                         <figcaption class="site-caption">{{ site.title }}</figcaption>
                         <picture>
-                            <source type="image/webp" :data-srcset="getWebp(site.screenshot)">
-                            <source type="image/jpeg" :data-srcset="getJpg(site.screenshot)">
-                            <img class="lazyload" :data-src="getJpg(site.screenshot)" :alt="site.title">
+                            <source type="image/webp" :srcset="getWebp(site.screenshot)">
+                            <source type="image/jpeg" :srcset="getJpg(site.screenshot)">
+                            <img loading="lazy" :src="getJpg(site.screenshot)" :alt="site.title">
+                        </picture>
+                    </figure> 
+                </article>
+            </section>
+        </section>
+
+        <section class="apps">
+            <h2><span>Mini apps</span></h2>
+            <p class="text-center section-description">A selection of apps I created while working at Siege Media.</p>
+
+            <section class="grid">
+                <article v-for="(site, index) in miniApps" class="grid-item" v-bind:class="{'left':(index % 3 === 0), 'right': (index % 3 === 2), 'center': (index % 3 === 1)}" @click="showDetails(site)">
+                    <figure title="Click for larger image and job description">
+                        <figcaption class="site-caption">{{ site.title }}</figcaption>
+                        <picture>
+                            <img loading="lazy" :src="getPng(site.screenshot)" :alt="site.title">
                         </picture>
                     </figure> 
                 </article>
@@ -144,7 +168,7 @@
                     <header class="service-header">
                         <figure>
                             <picture>
-                                <img class="logo lazyload" :data-src="job.logo" :data-srcset="job.logo" :alt="job.name" loading="lazy">
+                                <img class="logo" :src="job.logo" :srcset="job.logo" :alt="job.name" loading="lazy">
                             </picture>
                         </figure>
                     </header>
@@ -177,7 +201,7 @@
     <footer>
 
         <div class="imprint">
-            <p>Copyright &copy; 2019 Chris Smearing</p>
+            <p>Copyright &copy; 2019-2024 Chris Smearing</p>
             <div class="social">
                 <a href="https://github.com/chris-smearing" target="_blank" rel="noopener"><i class="fab fa-github fa-2x"></i><p class="hidden">My profile and repos on github.com.</p></a>
                 <a href="https://www.linkedin.com/in/csmearing/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in fa-2x"></i><p class="hidden">My profile on LinkedIn.com</p></a>
@@ -192,20 +216,9 @@
     </footer>
 
     <script src="js/vue.min.js"></script>
-    <script src="js/lazysizes.min.js" defer></script>
     <script src="js/particles.min.js" defer></script>
     <script src="js/vuedals.min.js" defer></script>
     <script src="js/vueperslides.umd.min.js" defer></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcFX6QUAAAAAIFRJOP8QH6nqdirIsbjd7jMbTjm"></script>
-
-    <script>
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LcFX6QUAAAAAIFRJOP8QH6nqdirIsbjd7jMbTjm', {action: 'homepage'})
-            .then(function(token) {
-                document.getElementById('captchaResponse').value = token;
-            });
-        });
-    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -279,7 +292,7 @@
                         <p v-if="tags" class="site-features">Features:</p>
                         <ul v-if="tags" class="tags"><li v-for="(tag, index) in tags">{{ tag }}</li></ul>
                         <div class="links">
-                            <a class="site-link" :href="link" target="_blank" rel="noopener">{{ link_text }}</a>
+                            <a v-if="link" class="site-link" :href="link" target="_blank" rel="noopener">{{ link_text }}</a>
                             <a v-if="repo" class="site-link" :href="repo" target="_blank" rel="noopener">View repo</a>
                         </div>
                     </div>`
@@ -295,30 +308,20 @@
                         {
                             name: 'WordPress',
                             icon: '<i class="fab fa-wordpress fa-3x" aria-hidden="true"></i>',
-                            description: '<p>Theme configuration, responsive template development with HTML5 and CSS3, shortcodes, plugins</p>',
+                            description: '<p>Theme configuration, responsive template development with HTML and CSS, shortcodes, plugins</p>',
                         },
                         {
                             name: 'Shopify',
-                            icon: '<span role="presentation" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 173.7">\
-                                <path class="lighter"\
-                                    d="M130.7 32.9c-.1-.9-.9-1.3-1.5-1.4-.6-.1-12.6-.2-12.6-.2s-10.1-9.8-11.1-10.8-2.9-.7-3.7-.5c0 0-1.9.6-5.1 1.6-.5-1.7-1.3-3.8-2.4-5.9-3.6-6.9-8.8-10.5-15.2-10.5-.4 0-.9 0-1.3.1-.2-.2-.4-.4-.6-.7-2.8-3-6.3-4.4-10.5-4.3-8.2.2-16.3 6.1-23 16.7-4.7 7.4-8.2 16.7-9.2 23.9-9.4 2.9-16 4.9-16.1 5-4.7 1.5-4.9 1.6-5.5 6.1C12.4 55.3 0 151.4 0 151.4l104.1 18 45.1-11.2S130.8 33.7 130.7 32.9zm-39.2-9.7c-2.4.7-5.1 1.6-8.1 2.5-.1-4.1-.6-9.9-2.5-14.9 6.3 1.2 9.3 8.2 10.6 12.4zM78 27.4c-5.5 1.7-11.4 3.5-17.4 5.4 1.7-6.4 4.9-12.8 8.8-17 1.5-1.6 3.5-3.3 5.9-4.3 2.3 4.7 2.7 11.4 2.7 15.9zM66.8 5.8c1.9 0 3.5.4 4.9 1.3-2.2 1.1-4.4 2.8-6.4 5-5.2 5.6-9.2 14.2-10.8 22.6-5 1.5-9.8 3-14.3 4.4 3-13.2 14-32.9 26.6-33.3z">\
-                                </path>\
-                                <path class="darker"\
-                                    d="M129.2 31.5c-.6-.1-12.6-.2-12.6-.2s-10.1-9.8-11.1-10.8c-.4-.4-.9-.6-1.4-.6v149.5l45.1-11.2S130.8 33.8 130.7 32.9c-.2-.9-.9-1.3-1.5-1.4z">\
-                                </path>\
-                                <path fill="#FFF"\
-                                    d="M79.1 54.7l-5.2 19.6s-5.8-2.7-12.8-2.2c-10.2.6-10.3 7-10.2 8.7.6 8.8 23.6 10.7 24.9 31.2 1 16.2-8.6 27.2-22.4 28.1-16.6 1-25.7-8.7-25.7-8.7l3.5-14.9s9.2 6.9 16.5 6.5c4.8-.3 6.5-4.2 6.3-7-.7-11.4-19.5-10.8-20.7-29.5-1-15.8 9.4-31.8 32.3-33.3 9-.8 13.5 1.5 13.5 1.5z">\
-                                </path>\
-                            </svg></span>',
-                            description: '<p>Theme configuration, responsive template development with HTML5, CSS3, and Liquid templating</p>',
+                            icon: '<i class="fa-brands fa-shopify fa-3x"></i>',
+                            description: '<p>Theme configuration, responsive template development with HTML, CSS, and Liquid templating</p>',
                         },
                         {
-                            name: 'Mailchimp',
+                            name: 'Email Marketing',
                             icon: '<i class="fab fa-mailchimp fa-3x" aria-hidden="true"></i>',
                             description: '<p>One-time and automated campaign setup; Creation of email compatible with majority of email clients</p>',
                         },
                         {
-                            name: 'HTML5 + CSS3',
+                            name: 'HTML + CSS',
                             icon: '<i class="fas fa-code fa-3x" aria-hidden="true"></i>',
                             description: '<p>Semantic markup with responsive styling; image optimization</p>',
                         },
@@ -335,10 +338,32 @@
                     ],
                     sites: [
                         {
+                            address: 'https://splice.com/blog',
+                            title: 'Splice',
+                            screenshot: 'images/splice',
+                            description: 'Complete template rewrite using Advanced Custom Fields and native WordPress features. Developed blog home page, category page, search results, post page, navigation system, and more.',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://thomasgriffin.com/leadership-statistics/',
+                            title: 'Thomas Griffin',
+                            screenshot: 'images/thomas-griffin',
+                            description: 'Created custom blocks for the WordPress block editor with Advanced Custom Fields to allow the creation of grid-based statistics sections.',
+                            platform: 'WordPress',
+                            tags: ['ACF'],
+                        },
+                        {
                             address: 'https://forgept.com',
                             title: "Forge Fitness & Nutrition Coaching",
                             screenshot: 'images/forgept',
                             description: 'This site uses the Pro theme, which was in place when I took over maintenance. I developed several page layouts with the Pro builder, and added Tawk.to plugin for real-time chat.',
+                            platform: 'WordPress',
+                        },
+                        {
+                            address: 'https://www.kidandcoe.com/blog',
+                            title: 'Kid & Coe',
+                            screenshot: 'images/kid-and-coe',
+                            description: 'Used a Twenty Twenty-three child theme to help the client implement a headless site using their preferred platform with Ruby on Rails. Created REST endpoints for the client to use to access special features of each post.',
                             platform: 'WordPress',
                         },
                         {
@@ -435,7 +460,7 @@
                             tags: ['ACF', 'templates', 'shortcodes'],
                         },
                         {
-                            address: '//chris-smearing.github.io/landing--tyra',
+                            address: 'https://chris-smearing.github.io/landing--tyra',
                             title: 'Tyra Beauty',
                             screenshot: 'images/tyra_screenshot',
                             description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank" rel="noopener">MJML language framework</a>',
@@ -444,7 +469,7 @@
                             platform: 'Shopify',
                         },
                         {
-                            address: '//chris-smearing.github.io/landing--westmore',
+                            address: 'https://chris-smearing.github.io/landing--westmore',
                             title: 'Westmore Beauty',
                             screenshot: 'images/westmore_screenshot',
                             description: 'Responsive template development in Shopify, Mailchimp campaign setup and email creation with the <a href="https://mjml.io/" target="_blank" rel="noopener">MJML language framework</a>',
@@ -453,21 +478,21 @@
                             platform: 'Shopify',
                         },
                         {
-                            address: 'http://cidregistry.com',
+                            address: '',
                             title: 'CID Registry',
                             screenshot: 'images/cidregistry_screenshot',
                             description: 'Designed by <a target="_blank" href="https://www.turningheadsdesigns.com/">Heather at Turning Heads Design</a>. Hosting configuration, WordPress full site build and deployment, responsive template development, custom form development',
                             platform: 'WordPress',
                         },
                         {
-                            address: 'https://bravewomentravel.com',
+                            address: '',
                             title: 'Brave Women Travel',
                             screenshot: 'images/brave_women_travel_screenshot',
                             description: 'WordPress site development, responsive template development, <a href="https://www.advancedcustomfields.com/" target="_blank" rel="noopener">Advanced Custom Fields</a> integration',
                             platform: 'WordPress',
                         },
                         {
-                            address: 'http://servicecityenergy.com',
+                            address: '',
                             title: 'Service City Energy',
                             screenshot: 'images/service_city_screenshot',
                             description: 'Designed by <a target="_blank" href="https://www.turningheadsdesigns.com/">Heather at Turning Heads Design</a>. Hosting setup, Landing page development with <a href="https://theme.co/pro" target="_blank" rel="noopener">Pro theme</a>, Slider Revolution customization',
@@ -498,42 +523,49 @@
                     ],
                     experience: [
                         {
-                            name: 'Siege Media',
-                            date: '2021-present',
-                            logo: 'img/siege-media.svg',
-                            description: '<ul><li>Interactive calculators, maps, and quizzes</li>\
-                            <li>Create custom templates, landing pages, and contact forms; able to create templates in the client\'s required format.</li>\
-                            <li>Conversion of graphic designs to templates</li></ul>',
-                            skills: [
-                                'HTML5',
-                                'CSS3 / SCSS',
-                                'PHP / WordPress',
-                                'JavaScript',
-                                'Vue / React',
-                                'Shopify Liquid',
-                                'git',
-                                'npm / yarn',
-                                'LocalWP / DevKinsta',
-                            ],
-                        },
-                        {
-                            name: 'Freelance on Upwork',
-                            date: '2016-2021',
+                            name: 'Freelance',
+                            date: '2016-present',
                             logo: 'img/upwork-logo.svg',
-                            description: '<ul><li>Mobile-first responsive template development in WordPress and Shopify</li>\
-                            <li>Create custom templates, landing pages, and contact forms; able to create templates by hand or with page builders, such as Divi, Elementor, WP Bakery, Fusion Builder, or Pro theme</li>\
-                            <li>Conversion of graphic designs to templates</li>\
-                            <li>Cross-platform and device testing in BrowserStack and LambdaTest to debug</li></ul>',
+                            description: '<p>Versatile web developer with focus on front-end development.</p>\
+                            <ul><li>Mobile-first responsive development of custom templates, landing pages, and forms</li>\
+                            <li>Created templates manually or with page builders, such as the block editor, Elementor, Fusion Builder, WPBakery</li>\
+                            <li>Conversion of graphic designs to pages or templates</li>\
+                            <li>Collaborated with designers to implement mobile versions if only given desktop designs</li>\
+                            <li>Cross-platform and device testing in BrowserStack and LambdaTest to debug</li></ul>\
+                            <p>Back-end development and administration</p>\
+                            <ul><li>Set up hosting, DNS, and staging environments</li><li>Install, configure, and update WordPress, plugins, and themes</li></ul>\
+                            <p>Email and Marketing</p>\
+                            <ul><li>Created HTML emails using the MJML language and tools</li><li>Experienced with MailChimp, HubSpot, and InfusionSoft platforms</li></ul>\
+                            <p>Flexible development processes</p>\
+                            <ul><li>Able to quickly switch focus between projects as priorities change</li>\
+                                <li>Utilized Github, Gitlab, or Bitbucket per client preference</li>\
+                                <li>Project management in various services, such as Jira, Trello, and Basecamp</li>\
+                            </ul>\
+                            ',
                             skills: [
-                                'HTML5',
-                                'CSS3 / SCSS',
+                                'HTML',
+                                'CSS / SCSS',
                                 'PHP / WordPress',
                                 'JavaScript / jQuery',
                                 'Shopify Liquid',
                                 'git',
-                                'Gulp',
-                                'npm / yarn',
-                                'Laragon / Vagrant / DesktopServer / XAMPP',
+                                'node',
+                            ],
+                        },
+                        {
+                            name: 'Siege Media',
+                            date: '2021-2024',
+                            logo: 'img/siege-media.svg',
+                            description: '<p>Developed responsive web pages and applications using PHP, HTML, CSS, and JavaScript. The majority of clients used WordPress, thus requiring template updates, creating plugins and shortcodes, and performing site updates as required. Also developed sites in Shopify, Webflow, and Hubspot.</p>\
+                            <p>Collaborated with content marketers, graphic designers, and UX specialists to implement small web apps for financial calculators, quizzes, or conversion calculators.</p>\
+                            <p>Improved in-house WordPress plugin: added a Vue front-end application to quickly and easily configure related articles for each blog post. Added REST endpoints, updated back-end logic, and added regression testing.</p>',
+                            skills: [
+                                'HTML / CSS / SCSS',
+                                'PHP / WordPress',
+                                'JavaScript / Vue / React / Svelte',
+                                'Shopify / Webflow / Hubspot',
+                                'git',
+                                'node'
                             ],
                         },
                         {
@@ -542,8 +574,8 @@
                             logo: 'img/ti-logo.svg',
                             description: '<p>Created an application in Perl to analyze semiconductor test tool log files and aggregate the information into an Oracle database. The resulting data is then presented to the user via a web app built with mod-perl and Bootstrap 3. Template Toolkit was used for page templates that gave me a foundation in template processing systems.</p>',
                             skills: [
-                                'Programming languages: Perl, HTML, CSS',
-                                'Software: Apache, Template Toolkit, Bootstrap 3',
+                                'Perl, HTML, CSS, SQL',
+                                'Apache, Template Toolkit, Bootstrap 3',
                             ],
                         },
                         {
@@ -556,19 +588,19 @@
                             <li>Wrote extensive documentation for the reference application and the underlying ASIC.</li></ul> \
                             <p><strong>FPGA and ASIC Design:</strong> Utilized the latest generation of design and verification tools to implement various video and image processing algorithms for use in DLP® prototypes and ASICs.</p>',
                             skills: [
-                                'Programming languages: Assembly, C, C++, Perl, Tcl, Specman E, VHDL',
-                                'Software: ARM RealView, Visual Studio, Eclipse, ModelSim, Cadence simulation and verification, ClearCase, RCS, Altera Quartus, Xilinx ISE, Synplify, µC/OS II, ThreadX RTOS',
+                                'Languages: Assembly, C, C++, Perl, Tcl, VHDL',
+                                'Software: ARM, Visual Studio, Eclipse, ModelSim, Cadence, Altera, Xilinx, Synplify, µC/OS II, ThreadX RTOS',
                             ],
                         },
                     ],
                     testimonials: [
-                    {
+                        {
                             name: "Matt S.",
                             content: "His exceptional effort and dedication to the team directly contributed to making our last project successful.",
                         },
                         {
                             name: "George P.",
-                            content: "Chris is quick learner, very resourceful, enthusiastic and self motivated.",
+                            content: "Chris is a quick learner, very resourceful, enthusiastic and self motivated.",
                         },
                         {
                             name: "Larry D.",
@@ -582,6 +614,119 @@
                             name: "Mark F.",
                             content: "The highest compliment I can give anyone is that I would enjoy working with them again and Chris is definitely in that category."
                         }
+                    ],
+                    miniApps: [
+                        {
+                            address: 'https://www.instacart.com/company/ideas/grams-to-cups-conversion/',
+                            title: "Grams to Cups Converter",
+                            screenshot: 'images/grams-to-cups',
+                            description: 'Grams to cups or cups to grams converter. ',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.instacart.com/company/ideas/pizza-calculator/',
+                            title: "Pizza Calculator",
+                            screenshot: 'images/pizza-calc',
+                            description: 'Fun little app to calculate the number of pizzas to order given the number of people.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.instacart.com/company/ideas/cake-calculator/',
+                            title: "Cake Calculator",
+                            screenshot: 'images/cake-calc',
+                            description: 'Fun little app to calculate the number of cakes to order given the number of people.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.instacart.com/company/ideas/dry-to-cooked-pasta-calculator/',
+                            title: "Pasta Calculator",
+                            screenshot: 'images/pasta-calc',
+                            description: 'Calculate the volume of cooked pasta given the type of dry pasta.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.owner.com/blog/average-restaurant-profit-margin',
+                            title: "Profit Margin Calculator",
+                            screenshot: 'images/restaurant-profit-margin',
+                            description: 'Calculate a restaurant\'s profit margin and receive an indication whether it is healthy or not.',
+                            platform: 'Webflow'
+                        },
+                        {
+                            address: 'https://www.chime.com/blog/loan-payoff-calculator/',
+                            title: "Loan Payoff Calculator",
+                            screenshot: 'images/loan-payoff',
+                            description: 'Determine when you can pay off a loan.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.chime.com/blog/emergency-fund-calculator/',
+                            title: "Emergency Fund Calculator",
+                            screenshot: 'images/emergency-fund',
+                            description: 'Determine how much to contribute monthly to save for an emergency fund.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.chime.com/blog/savings-goal-calculator/',
+                            title: "Savings Goal Calculator",
+                            screenshot: 'images/savings-goal',
+                            description: 'Determine how much to save monthly to reach a goal.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.robertsoncollege.com/blog/studying-at-robertson/what-type-of-learner-are-you/',
+                            title: "Learning Type Quiz",
+                            screenshot: 'images/learning-type',
+                            description: 'A quiz type app that helps the user determine their learning type.',
+                            platform: 'Vue and integrated with a WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.elkspringsresort.com/black-bear-facts/',
+                            title: "Black Bear Facts",
+                            screenshot: 'images/elk-springs',
+                            description: 'Several fun little apps that show facts about black bears in Smoky Mountain National Park.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.thezebra.com/resources/driving/auto-loan-payoff-calculator/',
+                            title: "Auto Loan Payoff Calculator",
+                            screenshot: 'images/auto-loan-payoff',
+                            description: 'Determine the date at which you can pay off your auto loan.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://mailshake.com/blog/sales-commission-rates-by-industry/',
+                            title: "Sales Commission Rates",
+                            screenshot: 'images/sales-commissions',
+                            description: 'Sales commission rates by industry. A donut chart helps visualize the base salary and commissions of each industry.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://mailshake.com/blog/100-sales-statistics/',
+                            title: "100 Sales Statistics",
+                            screenshot: 'images/sales-statistics',
+                            description: 'Grid-based visualization of sales statistics by category.',
+                            platform: 'WordPress'
+                        },
+                        {
+                            address: 'https://www.siegemedia.com/strategy/content-marketing-roi',
+                            title: "Content Marketing ROI",
+                            screenshot: 'images/cm-roi',
+                            description: 'Calculate the ROI on content marketing depending on goal type. The results are shown in text and graphical forms.',
+                            platform: 'Vue and integrated with a WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.retireguide.com/retirement-life-leisure/financial-wellness/how-long-will-my-retirement-savings-last/',
+                            title: "Retirement Savings Calculator",
+                            screenshot: 'images/retirement-savings',
+                            description: 'Determine how long your savings will last depending on various factors.',
+                            platform: 'WordPress plugin'
+                        },
+                        {
+                            address: 'https://www.pacaso.com/blog/second-home-calculator',
+                            title: "Second Home Calculator",
+                            screenshot: 'images/second-home-calc',
+                            description: 'Multi-step form to determine how much home a user can afford.',
+                        },
                     ],
                     sliderBreakpoints: {
                         1024: {
@@ -601,7 +746,7 @@
                                 headline: site.title,
                                 screenshotJpg: this.getJpg(site.screenshot),
                                 screenshotWebp: this.getWebp(site.screenshot),
-                                link: site.address,
+                                link: this.getSiteAddress(site.address),
                                 description: site.description,
                                 link_text: site.link_text,
                                 repo: site.repo,
@@ -618,11 +763,17 @@
                     getJpg: function(imgUrl) {
                         return imgUrl + '.jpg';
                     },
+                    getPng: function(imgUrl) {
+                        return imgUrl + '.png';
+                    },
                     getLqip: function(imgUrl) {
                         return imgUrl + '-lqip.jpg';
                     },
                     getPerson: function(name) {
                         return "&mdash; " + name;
+                    },
+                    getSiteAddress: function(address) {
+                        return (address) ? address : '';
                     },
                 }
             });
